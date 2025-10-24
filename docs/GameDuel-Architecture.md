@@ -2,14 +2,14 @@
 
 ## Document Metadata
 
-| Field | Value |
-|-------|-------|
-| **Product Name** | GameDuel |
-| **Document Version** | 1.0 |
-| **Target Release** | MVP - Phase 1 |
-| **Architect** | System Architect |
-| **Status** | Complete |
-| **Date** | October 23, 2025 |
+| Field                 | Value                                                                                                      |
+| --------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Product Name**      | GameDuel                                                                                                   |
+| **Document Version**  | 1.0                                                                                                        |
+| **Target Release**    | MVP - Phase 1                                                                                              |
+| **Architect**         | System Architect                                                                                           |
+| **Status**            | Complete                                                                                                   |
+| **Date**              | October 23, 2025                                                                                           |
 | **Related Documents** | [PRD v1.0](GameDuel-Product_Requirements_Document-PRD.md), [Project Brief v1.0](GameDuel-Project_Brief.md) |
 
 ---
@@ -50,13 +50,13 @@ This architecture document defines the technical foundation for GameDuel MVP - a
 
 ### 1.3 Key Architectural Decisions
 
-| Decision | Rationale | Trade-offs |
-|----------|-----------|------------|
-| **React Native + Expo** | Cross-platform development with 70% code reuse, rapid iteration | Limited access to native APIs (mitigated by Expo modules) |
-| **Local-First Architecture** | No backend costs for MVP, offline capability, faster time-to-market | Social features deferred to post-MVP |
-| **AsyncStorage + Secure Store** | Simple key-value storage for MVP scale, platform-native security | May require migration to SQLite for complex queries at scale |
-| **OAuth 2.0 + PKCE** | Industry standard for mobile, gaming platforms require it | Complexity in flow implementation |
-| **Monorepo Structure** | All code in single repo, shared components, simplified CI/CD | Larger initial clone size |
+| Decision                        | Rationale                                                           | Trade-offs                                                   |
+| ------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------ |
+| **React Native + Expo**         | Cross-platform development with 70% code reuse, rapid iteration     | Limited access to native APIs (mitigated by Expo modules)    |
+| **Local-First Architecture**    | No backend costs for MVP, offline capability, faster time-to-market | Social features deferred to post-MVP                         |
+| **AsyncStorage + Secure Store** | Simple key-value storage for MVP scale, platform-native security    | May require migration to SQLite for complex queries at scale |
+| **OAuth 2.0 + PKCE**            | Industry standard for mobile, gaming platforms require it           | Complexity in flow implementation                            |
+| **Monorepo Structure**          | All code in single repo, shared components, simplified CI/CD        | Larger initial clone size                                    |
 
 ---
 
@@ -108,13 +108,13 @@ This architecture document defines the technical foundation for GameDuel MVP - a
 
 ### 2.2 High-Level Component Overview
 
-| Component | Purpose | Technology | Storage Location |
-|-----------|---------|------------|------------------|
-| **UI Layer** | User interface, navigation, visual components | React Native, React Navigation | In-memory |
-| **State Layer** | Global app state, auth state, video state | React Context API | In-memory + persistence |
-| **Service Layer** | Business logic, API clients, data transformations | TypeScript classes/functions | N/A |
-| **Storage Layer** | Persistent data, secure tokens, video files | AsyncStorage, Secure Store, File System | Device storage |
-| **Integration Layer** | OAuth flows, gaming API communication | expo-web-browser, axios | N/A |
+| Component             | Purpose                                           | Technology                              | Storage Location        |
+| --------------------- | ------------------------------------------------- | --------------------------------------- | ----------------------- |
+| **UI Layer**          | User interface, navigation, visual components     | React Native, React Navigation          | In-memory               |
+| **State Layer**       | Global app state, auth state, video state         | React Context API                       | In-memory + persistence |
+| **Service Layer**     | Business logic, API clients, data transformations | TypeScript classes/functions            | N/A                     |
+| **Storage Layer**     | Persistent data, secure tokens, video files       | AsyncStorage, Secure Store, File System | Device storage          |
+| **Integration Layer** | OAuth flows, gaming API communication             | expo-web-browser, axios                 | N/A                     |
 
 ---
 
@@ -153,14 +153,14 @@ This architecture document defines the technical foundation for GameDuel MVP - a
 
 ### 3.2 Design Patterns
 
-| Pattern | Use Case | Example |
-|---------|----------|---------|
-| **Provider Pattern** | Global state management | AuthContext, VideoContext |
-| **Custom Hooks** | Reusable stateful logic | useAuth, useVideo, useGamingData |
-| **Service Layer** | API abstraction | SteamService, XboxService, VideoService |
-| **Repository Pattern** | Data access abstraction | UserRepository, VideoRepository |
-| **Factory Pattern** | Object creation | VideoMetadataFactory, ErrorFactory |
-| **Observer Pattern** | Event handling | Video save completion, OAuth callbacks |
+| Pattern                | Use Case                | Example                                 |
+| ---------------------- | ----------------------- | --------------------------------------- |
+| **Provider Pattern**   | Global state management | AuthContext, VideoContext               |
+| **Custom Hooks**       | Reusable stateful logic | useAuth, useVideo, useGamingData        |
+| **Service Layer**      | API abstraction         | SteamService, XboxService, VideoService |
+| **Repository Pattern** | Data access abstraction | UserRepository, VideoRepository         |
+| **Factory Pattern**    | Object creation         | VideoMetadataFactory, ErrorFactory      |
+| **Observer Pattern**   | Event handling          | Video save completion, OAuth callbacks  |
 
 ---
 
@@ -168,33 +168,34 @@ This architecture document defines the technical foundation for GameDuel MVP - a
 
 ### 4.1 Complete Technology Matrix
 
-| Category | Technology | Version | Purpose | Justification |
-|----------|-----------|---------|---------|---------------|
-| **Framework** | React Native | 0.76+ | Core mobile framework | Industry standard, large ecosystem |
-| **Build System** | Expo | SDK 54 | Development tooling, build, OTA updates | Fastest development velocity |
-| **Language** | TypeScript | 5.6+ | Type-safe development | Catch errors at compile time |
-| **Navigation** | React Navigation | v7 | Screen routing | Most popular RN navigation |
-| **State Management** | React Context | Built-in | Global state | Sufficient for MVP, no external deps |
-| **Local Storage** | AsyncStorage | @react-native-async-storage/async-storage | Non-sensitive data | Simple key-value store |
-| **Secure Storage** | expo-secure-store | Latest | Auth tokens | Platform-native encryption |
-| **Camera** | expo-camera | Latest | Video recording | Expo's camera abstraction |
-| **Video Playback** | expo-av | Latest | Video player | Comprehensive A/V support |
-| **Media Library** | expo-media-library | Latest | Device gallery access | Standard Expo media access |
-| **Web Browser** | expo-web-browser | Latest | OAuth flows | In-app browser for auth |
-| **File System** | expo-file-system | Latest | Video file operations | Direct file access |
-| **HTTP Client** | axios | 1.7+ | API requests | Better error handling than fetch |
-| **UI Styling** | expo-linear-gradient | Latest | Gradients | Gaming aesthetic |
-| **Forms** | react-hook-form | 7.54+ | Form handling | Performant form state |
-| **Validation** | zod | 3.23+ | Schema validation | Type-safe runtime validation |
-| **Testing** | Jest + React Native Testing Library | Latest | Unit/integration tests | Standard RN testing |
-| **E2E Testing** | Detox | Latest | End-to-end tests | Native mobile E2E |
-| **Linting** | ESLint | Latest | Code quality | Standard linting |
-| **Formatting** | Prettier | Latest | Code formatting | Consistent style |
-| **CI/CD** | GitHub Actions | N/A | Automated builds/tests | Free for open source |
+| Category             | Technology                          | Version                                   | Purpose                                 | Justification                        |
+| -------------------- | ----------------------------------- | ----------------------------------------- | --------------------------------------- | ------------------------------------ |
+| **Framework**        | React Native                        | 0.76+                                     | Core mobile framework                   | Industry standard, large ecosystem   |
+| **Build System**     | Expo                                | SDK 54                                    | Development tooling, build, OTA updates | Fastest development velocity         |
+| **Language**         | TypeScript                          | 5.6+                                      | Type-safe development                   | Catch errors at compile time         |
+| **Navigation**       | React Navigation                    | v7                                        | Screen routing                          | Most popular RN navigation           |
+| **State Management** | React Context                       | Built-in                                  | Global state                            | Sufficient for MVP, no external deps |
+| **Local Storage**    | AsyncStorage                        | @react-native-async-storage/async-storage | Non-sensitive data                      | Simple key-value store               |
+| **Secure Storage**   | expo-secure-store                   | Latest                                    | Auth tokens                             | Platform-native encryption           |
+| **Camera**           | expo-camera                         | Latest                                    | Video recording                         | Expo's camera abstraction            |
+| **Video Playback**   | expo-av                             | Latest                                    | Video player                            | Comprehensive A/V support            |
+| **Media Library**    | expo-media-library                  | Latest                                    | Device gallery access                   | Standard Expo media access           |
+| **Web Browser**      | expo-web-browser                    | Latest                                    | OAuth flows                             | In-app browser for auth              |
+| **File System**      | expo-file-system                    | Latest                                    | Video file operations                   | Direct file access                   |
+| **HTTP Client**      | axios                               | 1.7+                                      | API requests                            | Better error handling than fetch     |
+| **UI Styling**       | expo-linear-gradient                | Latest                                    | Gradients                               | Gaming aesthetic                     |
+| **Forms**            | react-hook-form                     | 7.54+                                     | Form handling                           | Performant form state                |
+| **Validation**       | zod                                 | 3.23+                                     | Schema validation                       | Type-safe runtime validation         |
+| **Testing**          | Jest + React Native Testing Library | Latest                                    | Unit/integration tests                  | Standard RN testing                  |
+| **E2E Testing**      | Detox                               | Latest                                    | End-to-end tests                        | Native mobile E2E                    |
+| **Linting**          | ESLint                              | Latest                                    | Code quality                            | Standard linting                     |
+| **Formatting**       | Prettier                            | Latest                                    | Code formatting                         | Consistent style                     |
+| **CI/CD**            | GitHub Actions                      | N/A                                       | Automated builds/tests                  | Free for open source                 |
 
 ### 4.2 Dependency Rationale
 
 **Why Expo over vanilla React Native?**
+
 - 40% faster development velocity
 - Built-in OTA updates for quick fixes
 - Simplified build process (no Xcode/Android Studio required)
@@ -202,12 +203,14 @@ This architecture document defines the technical foundation for GameDuel MVP - a
 - Drawback: 10MB larger app size (acceptable for MVP)
 
 **Why AsyncStorage over SQLite?**
+
 - Sufficient for MVP scale (< 10,000 records)
 - Simpler API, faster implementation
 - Zero configuration required
 - Migration path to SQLite exists when needed (estimated at 50,000+ videos per user)
 
 **Why React Context over Redux?**
+
 - MVP has simple state requirements
 - No need for middleware or dev tools yet
 - Reduces bundle size by ~50KB
@@ -411,6 +414,7 @@ gameduel/
 #### 6.1.1 Screen Components
 
 **Structure Pattern:**
+
 ```typescript
 // HomeScreen.tsx
 import React from 'react';
@@ -423,7 +427,7 @@ import styles from './HomeScreen.styles';
 export const HomeScreen: React.FC = () => {
   const { user } = useAuth();
   const { videos, stats } = useVideo();
-  
+
   return (
     <View style={styles.container}>
       {/* Screen content */}
@@ -433,6 +437,7 @@ export const HomeScreen: React.FC = () => {
 ```
 
 **Screen Responsibilities:**
+
 - Orchestrate multiple components
 - Manage screen-level state
 - Handle navigation
@@ -484,6 +489,7 @@ App
 #### 6.2.1 Context Providers
 
 **AuthContext:**
+
 ```typescript
 // contexts/AuthContext.tsx
 interface AuthContextValue {
@@ -520,6 +526,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 ```
 
 **VideoContext:**
+
 ```typescript
 // contexts/VideoContext.tsx
 interface VideoContextValue {
@@ -534,6 +541,7 @@ interface VideoContextValue {
 ```
 
 **GamingContext:**
+
 ```typescript
 // contexts/GamingContext.tsx
 interface GamingContextValue {
@@ -583,17 +591,17 @@ export class VideoService {
   async recordVideo(duration: number): Promise<Video> {
     // 1. Record video using expo-camera
     const recording = await this.startRecording();
-    
+
     // 2. Stop after duration
     await this.wait(duration * 1000);
     const videoUri = await recording.stopAndUnloadAsync();
-    
+
     // 3. Generate thumbnail
     const thumbnailUri = await this.thumbnailService.generate(videoUri);
-    
+
     // 4. Save to device media library
     await this.fileStorageService.saveToMediaLibrary(videoUri);
-    
+
     // 5. Create video metadata
     const video = await this.videoRepository.create({
       localUri: videoUri,
@@ -601,19 +609,19 @@ export class VideoService {
       duration,
       createdAt: new Date(),
     });
-    
+
     return video;
   }
 
   async deleteVideo(id: string): Promise<void> {
     const video = await this.videoRepository.findById(id);
-    
+
     // 1. Delete video file
     await this.fileStorageService.deleteFile(video.localUri);
-    
+
     // 2. Delete thumbnail
     await this.fileStorageService.deleteFile(video.thumbnailUri);
-    
+
     // 3. Remove from repository
     await this.videoRepository.delete(id);
   }
@@ -626,33 +634,33 @@ export class VideoService {
 // services/index.ts (Service Factory)
 export class ServiceContainer {
   private static instance: ServiceContainer;
-  
+
   private videoService: VideoService;
   private authService: AuthService;
   private steamService: SteamService;
-  
+
   private constructor() {
     // Initialize services with dependencies
     const videoRepository = new VideoRepository();
     const fileStorage = new FileStorageService();
     const thumbnailService = new ThumbnailService();
-    
+
     this.videoService = new VideoService(videoRepository, fileStorage, thumbnailService);
     this.authService = new AuthService(new UserRepository(), new SecureStorageService());
     this.steamService = new SteamService(new SteamClient());
   }
-  
+
   static getInstance(): ServiceContainer {
     if (!ServiceContainer.instance) {
       ServiceContainer.instance = new ServiceContainer();
     }
     return ServiceContainer.instance;
   }
-  
+
   getVideoService(): VideoService {
     return this.videoService;
   }
-  
+
   // ... other getters
 }
 ```
@@ -668,7 +676,7 @@ export class ServiceContainer {
 ```typescript
 // models/User.ts
 export interface User {
-  id: string;                    // UUID v4
+  id: string; // UUID v4
   email: string;
   username: string;
   avatarUrl?: string;
@@ -729,11 +737,11 @@ export interface UserSettings {
 ```typescript
 // models/Video.ts
 export interface Video {
-  id: string;                    // UUID v4
+  id: string; // UUID v4
   userId: string;
-  localUri: string;              // file:// path
-  thumbnailUri: string;          // file:// path to thumbnail
-  duration: number;              // seconds (always 15 for MVP)
+  localUri: string; // file:// path
+  thumbnailUri: string; // file:// path to thumbnail
+  duration: number; // seconds (always 15 for MVP)
   resolution: VideoResolution;
   type: VideoType;
   createdAt: Date;
@@ -776,7 +784,7 @@ export interface Achievement {
 export interface GameSessionData {
   startTime: Date;
   endTime?: Date;
-  playtime: number;              // minutes
+  playtime: number; // minutes
   score?: number;
   rank?: string;
 }
@@ -791,21 +799,21 @@ export interface GameSessionData {
 export interface SteamGameLibrary {
   games: SteamGame[];
   totalGames: number;
-  totalPlaytime: number;         // minutes
+  totalPlaytime: number; // minutes
 }
 
 export interface SteamGame {
   appId: number;
   name: string;
-  playtime: number;              // minutes
+  playtime: number; // minutes
   iconUrl: string;
   lastPlayed?: Date;
 }
 
 export interface SteamAchievement {
   apiName: string;
-  achieved: number;              // 0 or 1
-  unlockTime: number;            // Unix timestamp
+  achieved: number; // 0 or 1
+  unlockTime: number; // Unix timestamp
   name: string;
   description: string;
 }
@@ -858,15 +866,15 @@ export interface PSNGame {
 
 #### 7.2.1 Storage Type Selection
 
-| Data Type | Storage Mechanism | Rationale |
-|-----------|-------------------|-----------|
-| **Auth Tokens** | expo-secure-store | Platform-native encryption (Keychain/Keystore) |
-| **User Profile** | AsyncStorage | Non-sensitive, needs fast access |
-| **Video Metadata** | AsyncStorage | Structured data, fast queries for MVP |
-| **Video Files** | File System + Media Library | Large binary files |
-| **Thumbnails** | File System (app cache) | Generated images |
-| **App Settings** | AsyncStorage | Persistent preferences |
-| **Gaming Data Cache** | AsyncStorage | Temporary cache, refreshable |
+| Data Type             | Storage Mechanism           | Rationale                                      |
+| --------------------- | --------------------------- | ---------------------------------------------- |
+| **Auth Tokens**       | expo-secure-store           | Platform-native encryption (Keychain/Keystore) |
+| **User Profile**      | AsyncStorage                | Non-sensitive, needs fast access               |
+| **Video Metadata**    | AsyncStorage                | Structured data, fast queries for MVP          |
+| **Video Files**       | File System + Media Library | Large binary files                             |
+| **Thumbnails**        | File System (app cache)     | Generated images                               |
+| **App Settings**      | AsyncStorage                | Persistent preferences                         |
+| **Gaming Data Cache** | AsyncStorage                | Temporary cache, refreshable                   |
 
 #### 7.2.2 AsyncStorage Key Schema
 
@@ -874,27 +882,27 @@ export interface PSNGame {
 // storage/storageKeys.ts
 export const StorageKeys = {
   // Auth
-  USER_TOKEN: '@gameduel:user_token',              // Deprecated (use SecureStore)
+  USER_TOKEN: '@gameduel:user_token', // Deprecated (use SecureStore)
   USER_PROFILE: '@gameduel:user_profile',
-  
+
   // Video metadata index
-  VIDEO_INDEX: '@gameduel:video_index',            // Array of video IDs
-  VIDEO_PREFIX: '@gameduel:video:',                // Video metadata by ID
-  
+  VIDEO_INDEX: '@gameduel:video_index', // Array of video IDs
+  VIDEO_PREFIX: '@gameduel:video:', // Video metadata by ID
+
   // Gaming accounts
   STEAM_ACCOUNT: '@gameduel:gaming:steam',
   XBOX_ACCOUNT: '@gameduel:gaming:xbox',
   PSN_ACCOUNT: '@gameduel:gaming:psn',
-  
+
   // Gaming data cache
   STEAM_GAMES: '@gameduel:steam:games',
   STEAM_ACHIEVEMENTS: '@gameduel:steam:achievements',
   XBOX_GAMES: '@gameduel:xbox:games',
   PSN_TROPHIES: '@gameduel:psn:trophies',
-  
+
   // Settings
   APP_SETTINGS: '@gameduel:settings',
-  
+
   // Metadata
   LAST_SYNC_TIMESTAMP: '@gameduel:last_sync',
   APP_VERSION: '@gameduel:app_version',
@@ -904,29 +912,30 @@ export const StorageKeys = {
 #### 7.2.3 Data Persistence Patterns
 
 **User Repository Pattern:**
+
 ```typescript
 // repositories/UserRepository.ts
 export class UserRepository {
   private storageService: AsyncStorageService;
-  
+
   async save(user: User): Promise<void> {
     await this.storageService.setItem(StorageKeys.USER_PROFILE, JSON.stringify(user));
   }
-  
+
   async load(): Promise<User | null> {
     const data = await this.storageService.getItem(StorageKeys.USER_PROFILE);
     return data ? JSON.parse(data) : null;
   }
-  
+
   async update(updates: Partial<User>): Promise<User> {
     const current = await this.load();
     if (!current) throw new Error('No user found');
-    
+
     const updated = { ...current, ...updates, updatedAt: new Date() };
     await this.save(updated);
     return updated;
   }
-  
+
   async delete(): Promise<void> {
     await this.storageService.removeItem(StorageKeys.USER_PROFILE);
   }
@@ -934,63 +943,64 @@ export class UserRepository {
 ```
 
 **Video Repository Pattern:**
+
 ```typescript
 // repositories/VideoRepository.ts
 export class VideoRepository {
   private storageService: AsyncStorageService;
-  
+
   async create(video: Omit<Video, 'id'>): Promise<Video> {
     const newVideo: Video = {
       id: uuid.v4(),
       ...video,
     };
-    
+
     // 1. Save video metadata
     await this.storageService.setItem(
       `${StorageKeys.VIDEO_PREFIX}${newVideo.id}`,
       JSON.stringify(newVideo)
     );
-    
+
     // 2. Update video index
     const index = await this.getIndex();
     index.push(newVideo.id);
     await this.saveIndex(index);
-    
+
     return newVideo;
   }
-  
+
   async findAll(): Promise<Video[]> {
     const index = await this.getIndex();
     const videos: Video[] = [];
-    
+
     for (const id of index) {
       const video = await this.findById(id);
       if (video) videos.push(video);
     }
-    
+
     return videos;
   }
-  
+
   async findById(id: string): Promise<Video | null> {
     const data = await this.storageService.getItem(`${StorageKeys.VIDEO_PREFIX}${id}`);
     return data ? JSON.parse(data) : null;
   }
-  
+
   async delete(id: string): Promise<void> {
     // 1. Remove from index
     const index = await this.getIndex();
-    const newIndex = index.filter(videoId => videoId !== id);
+    const newIndex = index.filter((videoId) => videoId !== id);
     await this.saveIndex(newIndex);
-    
+
     // 2. Remove metadata
     await this.storageService.removeItem(`${StorageKeys.VIDEO_PREFIX}${id}`);
   }
-  
+
   private async getIndex(): Promise<string[]> {
     const data = await this.storageService.getItem(StorageKeys.VIDEO_INDEX);
     return data ? JSON.parse(data) : [];
   }
-  
+
   private async saveIndex(index: string[]): Promise<void> {
     await this.storageService.setItem(StorageKeys.VIDEO_INDEX, JSON.stringify(index));
   }
@@ -1023,14 +1033,14 @@ export const migrations: Migration[] = [
 export async function runMigrations(): Promise<void> {
   const currentVersion = await AsyncStorage.getItem(StorageKeys.APP_VERSION);
   const version = currentVersion ? parseInt(currentVersion, 10) : 0;
-  
+
   for (const migration of migrations) {
     if (migration.version > version) {
       console.log(`Running migration to version ${migration.version}`);
       await migration.migrate();
     }
   }
-  
+
   await AsyncStorage.setItem(StorageKeys.APP_VERSION, CURRENT_DATA_VERSION.toString());
 }
 ```
@@ -1062,6 +1072,7 @@ sequenceDiagram
 ```
 
 **Key Security Measures:**
+
 - Passwords never stored locally
 - Session tokens stored in platform-secure storage (Keychain/Keystore)
 - Tokens are UUID v4 (non-predictable)
@@ -1090,6 +1101,7 @@ sequenceDiagram
 ```
 
 **PKCE Implementation:**
+
 ```typescript
 // services/auth/OAuthService.ts
 import * as Crypto from 'expo-crypto';
@@ -1100,41 +1112,38 @@ export class OAuthService {
     // 1. Generate PKCE parameters
     const codeVerifier = this.generateCodeVerifier();
     const codeChallenge = await this.generateCodeChallenge(codeVerifier);
-    
+
     // 2. Store code verifier for later use
     await this.storeCodeVerifier(platform, codeVerifier);
-    
+
     // 3. Build authorization URL
     const authUrl = this.buildAuthUrl(platform, codeChallenge);
-    
+
     // 4. Open browser for user authorization
     const result = await WebBrowser.openAuthSessionAsync(authUrl, this.getRedirectUri());
-    
+
     if (result.type === 'success') {
       const authCode = this.extractAuthCode(result.url);
       return authCode;
     }
-    
+
     throw new Error('OAuth cancelled or failed');
   }
-  
+
   private generateCodeVerifier(): string {
     const randomBytes = Crypto.getRandomBytes(32);
     return base64URLEncode(randomBytes);
   }
-  
+
   private async generateCodeChallenge(verifier: string): Promise<string> {
-    const hash = await Crypto.digestStringAsync(
-      Crypto.CryptoDigestAlgorithm.SHA256,
-      verifier
-    );
+    const hash = await Crypto.digestStringAsync(Crypto.CryptoDigestAlgorithm.SHA256, verifier);
     return base64URLEncode(hash);
   }
-  
+
   async exchangeCodeForToken(platform: string, authCode: string): Promise<string> {
     // 1. Retrieve code verifier
     const codeVerifier = await this.getCodeVerifier(platform);
-    
+
     // 2. Exchange authorization code for access token
     const response = await axios.post(this.getTokenEndpoint(platform), {
       grant_type: 'authorization_code',
@@ -1143,18 +1152,18 @@ export class OAuthService {
       client_id: this.getClientId(platform),
       redirect_uri: this.getRedirectUri(),
     });
-    
+
     const { access_token, refresh_token } = response.data;
-    
+
     // 3. Store tokens securely
     await SecureStore.setItemAsync(`${platform}_access_token`, access_token);
     if (refresh_token) {
       await SecureStore.setItemAsync(`${platform}_refresh_token`, refresh_token);
     }
-    
+
     // 4. Cleanup code verifier
     await this.deleteCodeVerifier(platform);
-    
+
     return access_token;
   }
 }
@@ -1179,7 +1188,7 @@ export class SecureStorageService {
       throw new Error('Secure storage failed');
     }
   }
-  
+
   async getItem(key: string): Promise<string | null> {
     try {
       return await SecureStore.getItemAsync(key);
@@ -1188,7 +1197,7 @@ export class SecureStorageService {
       return null;
     }
   }
-  
+
   async deleteItem(key: string): Promise<void> {
     try {
       await SecureStore.deleteItemAsync(key);
@@ -1213,14 +1222,14 @@ await secureStorage.deleteItem('user_session_token');
 
 #### 8.2.2 Sensitive Data Handling
 
-| Data Type | Security Measure | Storage Location |
-|-----------|------------------|------------------|
-| **Session Tokens** | Platform encryption (Keychain/Keystore) | SecureStore |
-| **OAuth Tokens** | Platform encryption | SecureStore |
-| **Gaming API Keys** | Environment variables, never hardcoded | Expo Config |
-| **User Passwords** | Never stored (auth is local for MVP) | N/A |
-| **User Email** | Plaintext (not sensitive for MVP) | AsyncStorage |
-| **Video Files** | Device file system permissions | Media Library |
+| Data Type           | Security Measure                        | Storage Location |
+| ------------------- | --------------------------------------- | ---------------- |
+| **Session Tokens**  | Platform encryption (Keychain/Keystore) | SecureStore      |
+| **OAuth Tokens**    | Platform encryption                     | SecureStore      |
+| **Gaming API Keys** | Environment variables, never hardcoded  | Expo Config      |
+| **User Passwords**  | Never stored (auth is local for MVP)    | N/A              |
+| **User Email**      | Plaintext (not sensitive for MVP)       | AsyncStorage     |
+| **Video Files**     | Device file system permissions          | Media Library    |
 
 ### 8.3 API Security
 
@@ -1232,7 +1241,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 export class HttpClient {
   private axiosInstance: AxiosInstance;
-  
+
   constructor() {
     this.axiosInstance = axios.create({
       timeout: 10000,
@@ -1240,7 +1249,7 @@ export class HttpClient {
         'Content-Type': 'application/json',
       },
     });
-    
+
     // Request interceptor - add auth tokens
     this.axiosInstance.interceptors.request.use(
       async (config) => {
@@ -1249,17 +1258,17 @@ export class HttpClient {
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
-        
+
         // Ensure HTTPS only
         if (!config.url?.startsWith('https://')) {
           throw new Error('Only HTTPS requests allowed');
         }
-        
+
         return config;
       },
       (error) => Promise.reject(error)
     );
-    
+
     // Response interceptor - handle errors
     this.axiosInstance.interceptors.response.use(
       (response) => response,
@@ -1272,7 +1281,7 @@ export class HttpClient {
       }
     );
   }
-  
+
   private async getAuthToken(url?: string): Promise<string | null> {
     // Determine which token to use based on URL
     if (url?.includes('steampowered.com')) {
@@ -1282,14 +1291,14 @@ export class HttpClient {
       return await SecureStore.getItemAsync('xbox_access_token');
     }
     // ... PSN, etc.
-    
+
     return await SecureStore.getItemAsync('user_session_token');
   }
-  
+
   get<T>(url: string, config?: AxiosRequestConfig) {
     return this.axiosInstance.get<T>(url, config);
   }
-  
+
   post<T>(url: string, data?: any, config?: AxiosRequestConfig) {
     return this.axiosInstance.post<T>(url, data, config);
   }
@@ -1303,29 +1312,29 @@ export class HttpClient {
 export class RateLimiter {
   private requests: Map<string, number[]> = new Map();
   private limits: Map<string, { max: number; window: number }> = new Map([
-    ['steam', { max: 100, window: 60000 }],      // 100 requests per minute
-    ['xbox', { max: 300, window: 300000 }],      // 300 requests per 5 minutes
-    ['psn', { max: 60, window: 60000 }],         // 60 requests per minute
+    ['steam', { max: 100, window: 60000 }], // 100 requests per minute
+    ['xbox', { max: 300, window: 300000 }], // 300 requests per 5 minutes
+    ['psn', { max: 60, window: 60000 }], // 60 requests per minute
   ]);
-  
+
   async throttle(platform: string): Promise<void> {
     const now = Date.now();
     const limit = this.limits.get(platform);
     if (!limit) return;
-    
+
     const requests = this.requests.get(platform) || [];
-    
+
     // Remove requests outside the window
-    const validRequests = requests.filter(time => now - time < limit.window);
-    
+    const validRequests = requests.filter((time) => now - time < limit.window);
+
     if (validRequests.length >= limit.max) {
       const oldestRequest = validRequests[0];
       const waitTime = limit.window - (now - oldestRequest);
-      
+
       console.log(`Rate limit reached for ${platform}. Waiting ${waitTime}ms`);
-      await new Promise(resolve => setTimeout(resolve, waitTime));
+      await new Promise((resolve) => setTimeout(resolve, waitTime));
     }
-    
+
     // Record this request
     validRequests.push(now);
     this.requests.set(platform, validRequests);
@@ -1343,13 +1352,13 @@ export async function retryWithBackoff<T>(
       return await fn();
     } catch (error) {
       if (attempt === maxRetries - 1) throw error;
-      
+
       const delay = baseDelay * Math.pow(2, attempt);
       console.log(`Retry attempt ${attempt + 1}/${maxRetries} after ${delay}ms`);
-      await new Promise(resolve => setTimeout(resolve, delay));
+      await new Promise((resolve) => setTimeout(resolve, delay));
     }
   }
-  
+
   throw new Error('Max retries exceeded');
 }
 ```
@@ -1364,7 +1373,7 @@ import * as Camera from 'expo-camera';
 export class PermissionsManager {
   async requestCameraPermission(): Promise<boolean> {
     const { status } = await Camera.requestCameraPermissionsAsync();
-    
+
     if (status !== 'granted') {
       Alert.alert(
         'Camera Permission Required',
@@ -1373,13 +1382,13 @@ export class PermissionsManager {
       );
       return false;
     }
-    
+
     return true;
   }
-  
+
   async requestMediaLibraryPermission(): Promise<boolean> {
     const { status } = await MediaLibrary.requestPermissionsAsync();
-    
+
     if (status !== 'granted') {
       Alert.alert(
         'Media Library Permission Required',
@@ -1388,13 +1397,13 @@ export class PermissionsManager {
       );
       return false;
     }
-    
+
     return true;
   }
-  
+
   async requestMicrophonePermission(): Promise<boolean> {
     const { status } = await Camera.requestMicrophonePermissionsAsync();
-    
+
     if (status !== 'granted') {
       Alert.alert(
         'Microphone Permission Required',
@@ -1403,10 +1412,10 @@ export class PermissionsManager {
       );
       return false;
     }
-    
+
     return true;
   }
-  
+
   async requestAllPermissions(): Promise<{
     camera: boolean;
     mediaLibrary: boolean;
@@ -1430,17 +1439,18 @@ export class PermissionsManager {
 #### 9.1.1 Steam Integration
 
 **API Endpoints:**
+
 ```typescript
 // api/steam/steamEndpoints.ts
 export const SteamEndpoints = {
   // OAuth
   AUTHORIZE: 'https://steamcommunity.com/oauth/login',
   TOKEN: 'https://steamcommunity.com/oauth/token',
-  
+
   // User data
   PLAYER_SUMMARIES: 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2',
   OWNED_GAMES: 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v1',
-  
+
   // Achievements
   PLAYER_ACHIEVEMENTS: 'https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1',
   GAME_SCHEMA: 'https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2',
@@ -1448,35 +1458,36 @@ export const SteamEndpoints = {
 ```
 
 **Steam Client:**
+
 ```typescript
 // api/steam/SteamClient.ts
 export class SteamClient {
   private httpClient: HttpClient;
   private apiKey: string;
   private rateLimiter: RateLimiter;
-  
+
   constructor() {
     this.httpClient = new HttpClient();
     this.apiKey = Config.STEAM_API_KEY;
     this.rateLimiter = new RateLimiter();
   }
-  
+
   async getPlayerSummaries(steamId: string): Promise<SteamPlayerSummary> {
     await this.rateLimiter.throttle('steam');
-    
+
     const response = await this.httpClient.get(SteamEndpoints.PLAYER_SUMMARIES, {
       params: {
         key: this.apiKey,
         steamids: steamId,
       },
     });
-    
+
     return response.data.response.players[0];
   }
-  
+
   async getOwnedGames(steamId: string): Promise<SteamGame[]> {
     await this.rateLimiter.throttle('steam');
-    
+
     const response = await this.httpClient.get(SteamEndpoints.OWNED_GAMES, {
       params: {
         key: this.apiKey,
@@ -1485,16 +1496,13 @@ export class SteamClient {
         include_played_free_games: 1,
       },
     });
-    
+
     return response.data.response.games || [];
   }
-  
-  async getPlayerAchievements(
-    steamId: string,
-    appId: number
-  ): Promise<SteamAchievement[]> {
+
+  async getPlayerAchievements(steamId: string, appId: number): Promise<SteamAchievement[]> {
     await this.rateLimiter.throttle('steam');
-    
+
     try {
       const response = await this.httpClient.get(SteamEndpoints.PLAYER_ACHIEVEMENTS, {
         params: {
@@ -1503,7 +1511,7 @@ export class SteamClient {
           appid: appId,
         },
       });
-      
+
       return response.data.playerstats.achievements || [];
     } catch (error) {
       // Game might not have achievements or user hasn't played
@@ -1515,24 +1523,25 @@ export class SteamClient {
 ```
 
 **Steam Service (Business Logic):**
+
 ```typescript
 // services/gaming/SteamService.ts
 export class SteamService {
   private steamClient: SteamClient;
   private oauthService: OAuthService;
   private storageService: AsyncStorageService;
-  
+
   async connectAccount(): Promise<SteamAccount> {
     // 1. OAuth flow
     const authCode = await this.oauthService.initiateOAuth('steam');
     const accessToken = await this.oauthService.exchangeCodeForToken('steam', authCode);
-    
+
     // 2. Get Steam ID from token
     const steamId = await this.extractSteamId(accessToken);
-    
+
     // 3. Fetch user profile
     const profile = await this.steamClient.getPlayerSummaries(steamId);
-    
+
     // 4. Create account object
     const account: SteamAccount = {
       connected: true,
@@ -1542,65 +1551,54 @@ export class SteamService {
       profileUrl: profile.profileurl,
       lastSynced: new Date(),
     };
-    
+
     // 5. Save to storage
-    await this.storageService.setItem(
-      StorageKeys.STEAM_ACCOUNT,
-      JSON.stringify(account)
-    );
-    
+    await this.storageService.setItem(StorageKeys.STEAM_ACCOUNT, JSON.stringify(account));
+
     // 6. Fetch and cache games
     await this.syncGames(steamId);
-    
+
     return account;
   }
-  
+
   async syncGames(steamId: string): Promise<void> {
     const games = await this.steamClient.getOwnedGames(steamId);
-    
+
     // Transform and sort by playtime
     const library: SteamGameLibrary = {
-      games: games
-        .sort((a, b) => b.playtime_forever - a.playtime_forever)
-        .slice(0, 100), // Cache top 100 games
+      games: games.sort((a, b) => b.playtime_forever - a.playtime_forever).slice(0, 100), // Cache top 100 games
       totalGames: games.length,
       totalPlaytime: games.reduce((sum, game) => sum + game.playtime_forever, 0),
     };
-    
-    await this.storageService.setItem(
-      StorageKeys.STEAM_GAMES,
-      JSON.stringify(library)
-    );
+
+    await this.storageService.setItem(StorageKeys.STEAM_GAMES, JSON.stringify(library));
   }
-  
+
   async getRecentAchievements(steamId: string, limit: number = 10): Promise<Achievement[]> {
     const library = await this.getGameLibrary();
     const achievements: Achievement[] = [];
-    
+
     // Fetch achievements from recently played games
     for (const game of library.games.slice(0, 5)) {
-      const gameAchievements = await this.steamClient.getPlayerAchievements(
-        steamId,
-        game.appid
-      );
-      
+      const gameAchievements = await this.steamClient.getPlayerAchievements(steamId, game.appid);
+
       // Filter unlocked achievements
       const unlocked = gameAchievements
-        .filter(a => a.achieved === 1)
+        .filter((a) => a.achieved === 1)
         .sort((a, b) => b.unlocktime - a.unlocktime)
-        .map(a => ({
+        .map((a) => ({
           id: a.apiname,
           name: a.name,
           description: a.description,
           iconUrl: a.icon,
           unlockedAt: new Date(a.unlocktime * 1000),
         }));
-      
+
       achievements.push(...unlocked);
-      
+
       if (achievements.length >= limit) break;
     }
-    
+
     return achievements.slice(0, limit);
   }
 }
@@ -1609,26 +1607,27 @@ export class SteamService {
 #### 9.1.2 Xbox Live Integration
 
 **Xbox Client:**
+
 ```typescript
 // api/xbox/XboxClient.ts
 export class XboxClient {
   private httpClient: HttpClient;
   private baseUrl: string = 'https://xapi.us/v2';
-  
+
   async getProfile(xuid: string): Promise<XboxProfile> {
     const response = await this.httpClient.get(`${this.baseUrl}/${xuid}/profile`);
     return response.data;
   }
-  
+
   async getAchievements(xuid: string, titleId?: string): Promise<XboxAchievement[]> {
     const url = titleId
       ? `${this.baseUrl}/${xuid}/achievements/${titleId}`
       : `${this.baseUrl}/${xuid}/achievements`;
-    
+
     const response = await this.httpClient.get(url);
     return response.data.achievements || [];
   }
-  
+
   async getGameHistory(xuid: string): Promise<XboxGame[]> {
     const response = await this.httpClient.get(`${this.baseUrl}/${xuid}/game-history`);
     return response.data.titles || [];
@@ -1647,15 +1646,15 @@ import PSN from 'psn-api';
 
 export class PSNClient {
   private api: any;
-  
+
   async authenticate(npsso: string): Promise<void> {
     this.api = await PSN.authenticate(npsso);
   }
-  
+
   async getProfile(onlineId: string): Promise<PSNProfile> {
     return await this.api.getProfile(onlineId);
   }
-  
+
   async getTrophies(onlineId: string): Promise<PSNTrophies> {
     const summary = await this.api.getTrophySummary(onlineId);
     return {
@@ -1666,10 +1665,10 @@ export class PSNClient {
       total: summary.earnedTrophies.total,
     };
   }
-  
+
   async getRecentGames(onlineId: string): Promise<PSNGame[]> {
     const games = await this.api.getRecentlyPlayedGames(onlineId);
-    return games.map(game => ({
+    return games.map((game) => ({
       npCommunicationId: game.npCommunicationId,
       name: game.titleName,
       imageUrl: game.titleIconUrl,
@@ -1694,12 +1693,12 @@ const GAMING_SYNC_TASK = 'gaming-data-sync';
 TaskManager.defineTask(GAMING_SYNC_TASK, async () => {
   try {
     console.log('Background sync started');
-    
+
     const gamingService = ServiceContainer.getInstance().getGamingService();
-    
+
     // Sync all connected platforms
     await gamingService.syncAllPlatforms();
-    
+
     return BackgroundFetch.BackgroundFetchResult.NewData;
   } catch (error) {
     console.error('Background sync failed:', error);
@@ -1723,7 +1722,7 @@ export async function registerBackgroundSync(): Promise<void> {
 export function useGamingPlatform() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const gamingService = ServiceContainer.getInstance().getGamingService();
-  
+
   const refreshGamingData = async () => {
     setIsRefreshing(true);
     try {
@@ -1735,7 +1734,7 @@ export function useGamingPlatform() {
       setIsRefreshing(false);
     }
   };
-  
+
   return { refreshGamingData, isRefreshing };
 }
 ```
@@ -1746,16 +1745,16 @@ export function useGamingPlatform() {
 
 ### 10.1 Performance Targets
 
-| Metric | Target | Measurement Method |
-|--------|--------|-------------------|
-| **Cold Start** | < 3 seconds | Time to interactive |
-| **Video Recording Init** | < 1 second | Camera ready to record |
-| **Gallery Scrolling** | 60 FPS | FlatList performance |
-| **Video Thumbnail Load** | < 500ms | Cached image display |
-| **OAuth Flow** | < 5 seconds | User authorization time |
-| **API Response Time** | < 2 seconds | 95th percentile |
-| **Video Playback Buffer** | < 500ms | Initial playback delay |
-| **Screen Transitions** | < 300ms | Navigation animation |
+| Metric                    | Target      | Measurement Method      |
+| ------------------------- | ----------- | ----------------------- |
+| **Cold Start**            | < 3 seconds | Time to interactive     |
+| **Video Recording Init**  | < 1 second  | Camera ready to record  |
+| **Gallery Scrolling**     | 60 FPS      | FlatList performance    |
+| **Video Thumbnail Load**  | < 500ms     | Cached image display    |
+| **OAuth Flow**            | < 5 seconds | User authorization time |
+| **API Response Time**     | < 2 seconds | 95th percentile         |
+| **Video Playback Buffer** | < 500ms     | Initial playback delay  |
+| **Screen Transitions**    | < 300ms     | Navigation animation    |
 
 ### 10.2 Performance Optimization Strategies
 
@@ -1796,22 +1795,22 @@ export const VideoCard = memo<VideoCardProps>(({ video, onPress }) => {
 // screens/gallery/GalleryScreen.tsx
 export const GalleryScreen: React.FC = () => {
   const { videos } = useVideo();
-  
+
   // Memoize renderItem to prevent recreation on every render
   const renderItem = useCallback(({ item }: { item: Video }) => (
     <VideoCard video={item} onPress={() => handleVideoPress(item)} />
   ), []);
-  
+
   // Memoize keyExtractor
   const keyExtractor = useCallback((item: Video) => item.id, []);
-  
+
   // Optimize item layout calculation
   const getItemLayout = useCallback((data, index) => ({
     length: ITEM_HEIGHT,
     offset: ITEM_HEIGHT * index,
     index,
   }), []);
-  
+
   return (
     <FlatList
       data={videos}
@@ -1841,41 +1840,41 @@ import { Video } from '@/models/Video';
 
 export class ThumbnailService {
   private cacheDirectory = `${FileSystem.cacheDirectory}thumbnails/`;
-  
+
   async generate(videoUri: string): Promise<string> {
     // Ensure cache directory exists
     await this.ensureCacheDirectory();
-    
+
     // Generate thumbnail using expo-video-thumbnails
     const { uri } = await VideoThumbnails.getThumbnailAsync(videoUri, {
       time: 0, // First frame
       quality: 0.7,
     });
-    
+
     // Move to cache directory with unique name
     const thumbnailName = `thumb_${Date.now()}.jpg`;
     const destinationUri = `${this.cacheDirectory}${thumbnailName}`;
-    
+
     await FileSystem.moveAsync({
       from: uri,
       to: destinationUri,
     });
-    
+
     return destinationUri;
   }
-  
+
   async clearOldThumbnails(daysOld: number = 30): Promise<void> {
     const files = await FileSystem.readDirectoryAsync(this.cacheDirectory);
     const now = Date.now();
     const maxAge = daysOld * 24 * 60 * 60 * 1000;
-    
+
     for (const file of files) {
       const filePath = `${this.cacheDirectory}${file}`;
       const info = await FileSystem.getInfoAsync(filePath);
-      
+
       if (info.exists && info.modificationTime) {
         const age = now - info.modificationTime * 1000;
-        
+
         if (age > maxAge) {
           await FileSystem.deleteAsync(filePath, { idempotent: true });
         }
@@ -1900,31 +1899,27 @@ export class MemoryManager {
       });
     }
   }
-  
+
   static async clearCaches() {
     // Clear image cache
     await Image.clearMemoryCache?.();
-    
+
     // Clear video thumbnails older than 7 days
     const thumbnailService = new ThumbnailService();
     await thumbnailService.clearOldThumbnails(7);
-    
+
     console.log('Caches cleared due to memory pressure');
   }
-  
+
   static async getMemoryUsage(): Promise<{
     videos: number;
     thumbnails: number;
     total: number;
   }> {
-    const videosDir = await FileSystem.getInfoAsync(
-      `${FileSystem.documentDirectory}videos/`
-    );
-    
-    const thumbnailsDir = await FileSystem.getInfoAsync(
-      `${FileSystem.cacheDirectory}thumbnails/`
-    );
-    
+    const videosDir = await FileSystem.getInfoAsync(`${FileSystem.documentDirectory}videos/`);
+
+    const thumbnailsDir = await FileSystem.getInfoAsync(`${FileSystem.cacheDirectory}thumbnails/`);
+
     return {
       videos: videosDir.size || 0,
       thumbnails: thumbnailsDir.size || 0,
@@ -1938,27 +1933,29 @@ export class MemoryManager {
 
 #### 10.4.1 Local Storage Limits
 
-| Platform | Storage Limit | Action at 80% | Action at 95% |
-|----------|---------------|---------------|---------------|
-| **iOS** | Variable (device dependent) | Warn user | Block new recordings |
-| **Android** | Variable (device dependent) | Warn user | Block new recordings |
-| **AsyncStorage** | ~10MB (soft limit) | Migrate to SQLite | Required |
+| Platform         | Storage Limit               | Action at 80%     | Action at 95%        |
+| ---------------- | --------------------------- | ----------------- | -------------------- |
+| **iOS**          | Variable (device dependent) | Warn user         | Block new recordings |
+| **Android**      | Variable (device dependent) | Warn user         | Block new recordings |
+| **AsyncStorage** | ~10MB (soft limit)          | Migrate to SQLite | Required             |
 
 #### 10.4.2 Migration Path to SQLite
 
 **Trigger Conditions:**
+
 - User has 1000+ videos
 - AsyncStorage operations slow (>500ms)
 - Complex queries needed (filtering, sorting)
 
 **Migration Script:**
+
 ```typescript
 // storage/migrations/migrateToSQLite.ts
 import * as SQLite from 'expo-sqlite';
 
 export async function migrateToSQLite(): Promise<void> {
   const db = SQLite.openDatabase('gameduel.db');
-  
+
   // 1. Create tables
   await db.execAsync(`
     CREATE TABLE IF NOT EXISTS videos (
@@ -1979,32 +1976,29 @@ export async function migrateToSQLite(): Promise<void> {
     CREATE INDEX idx_created_at ON videos(created_at DESC);
     CREATE INDEX idx_type ON videos(type);
   `);
-  
+
   // 2. Migrate data from AsyncStorage
   const videoRepository = new VideoRepository();
   const videos = await videoRepository.findAll();
-  
+
   for (const video of videos) {
-    await db.runAsync(
-      `INSERT INTO videos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [
-        video.id,
-        video.userId,
-        video.localUri,
-        video.thumbnailUri,
-        video.duration,
-        video.resolution,
-        video.type,
-        video.createdAt.getTime(),
-        video.views,
-        JSON.stringify(video.metadata),
-        video.gamingContext ? JSON.stringify(video.gamingContext) : null,
-      ]
-    );
+    await db.runAsync(`INSERT INTO videos VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [
+      video.id,
+      video.userId,
+      video.localUri,
+      video.thumbnailUri,
+      video.duration,
+      video.resolution,
+      video.type,
+      video.createdAt.getTime(),
+      video.views,
+      JSON.stringify(video.metadata),
+      video.gamingContext ? JSON.stringify(video.gamingContext) : null,
+    ]);
   }
-  
+
   console.log(`Migrated ${videos.length} videos to SQLite`);
-  
+
   // 3. Mark migration complete
   await AsyncStorage.setItem('@gameduel:migrated_to_sqlite', 'true');
 }
@@ -2061,10 +2055,7 @@ export async function migrateToSQLite(): Promise<void> {
 ```json
 // .eslintrc.json
 {
-  "extends": [
-    "expo",
-    "prettier"
-  ],
+  "extends": ["expo", "prettier"],
   "plugins": ["prettier", "react-hooks"],
   "rules": {
     "prettier/prettier": "error",
@@ -2100,16 +2091,16 @@ export async function migrateToSQLite(): Promise<void> {
 
 ### 11.2 Naming Conventions
 
-| Type | Convention | Example |
-|------|------------|---------|
-| **Files** | PascalCase for components, camelCase for utils | `VideoCard.tsx`, `formatters.ts` |
-| **Components** | PascalCase | `VideoCard`, `RecordButton` |
-| **Hooks** | camelCase starting with `use` | `useAuth`, `useVideo` |
-| **Services** | PascalCase ending with `Service` | `VideoService`, `AuthService` |
-| **Interfaces** | PascalCase | `User`, `Video`, `GamingAccount` |
-| **Constants** | UPPER_SNAKE_CASE | `MAX_VIDEO_DURATION`, `API_BASE_URL` |
-| **Enums** | PascalCase for type, UPPER_SNAKE_CASE for values | `VideoType.COMMENTARY` |
-| **Functions** | camelCase, descriptive verbs | `handlePress`, `fetchUserData` |
+| Type           | Convention                                       | Example                              |
+| -------------- | ------------------------------------------------ | ------------------------------------ |
+| **Files**      | PascalCase for components, camelCase for utils   | `VideoCard.tsx`, `formatters.ts`     |
+| **Components** | PascalCase                                       | `VideoCard`, `RecordButton`          |
+| **Hooks**      | camelCase starting with `use`                    | `useAuth`, `useVideo`                |
+| **Services**   | PascalCase ending with `Service`                 | `VideoService`, `AuthService`        |
+| **Interfaces** | PascalCase                                       | `User`, `Video`, `GamingAccount`     |
+| **Constants**  | UPPER_SNAKE_CASE                                 | `MAX_VIDEO_DURATION`, `API_BASE_URL` |
+| **Enums**      | PascalCase for type, UPPER_SNAKE_CASE for values | `VideoType.COMMENTARY`               |
+| **Functions**  | camelCase, descriptive verbs                     | `handlePress`, `fetchUserData`       |
 
 ### 11.3 Component Structure
 
@@ -2212,7 +2203,7 @@ export class ValidationError extends AppError {
 export class ErrorHandler {
   static handle(error: Error | AppError): void {
     console.error('Error occurred:', error);
-    
+
     if (error instanceof AppError) {
       if (error.isOperational) {
         // User-facing error - show alert
@@ -2228,7 +2219,7 @@ export class ErrorHandler {
       Alert.alert('Error', 'An unexpected error occurred. Please try again.');
     }
   }
-  
+
   private static logToService(error: Error): void {
     // In production, send to Sentry or similar
     console.error('Logging error to service:', error);
@@ -2244,16 +2235,16 @@ export class ErrorBoundary extends React.Component<
     super(props);
     this.state = { hasError: false };
   }
-  
+
   static getDerivedStateFromError(error: Error) {
     return { hasError: true };
   }
-  
+
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error('Error boundary caught:', error, errorInfo);
     ErrorHandler.handle(error);
   }
-  
+
   render() {
     if (this.state.hasError) {
       return (
@@ -2263,7 +2254,7 @@ export class ErrorBoundary extends React.Component<
         </View>
       );
     }
-    
+
     return this.props.children;
   }
 }
@@ -2284,20 +2275,20 @@ describe('Button Component', () => {
     const { getByText } = render(<Button title="Press Me" onPress={() => {}} />);
     expect(getByText('Press Me')).toBeTruthy();
   });
-  
+
   it('calls onPress when pressed', () => {
     const mockOnPress = jest.fn();
     const { getByText } = render(<Button title="Press Me" onPress={mockOnPress} />);
-    
+
     fireEvent.press(getByText('Press Me'));
     expect(mockOnPress).toHaveBeenCalledTimes(1);
   });
-  
+
   it('applies correct styles when disabled', () => {
     const { getByTestId } = render(
       <Button title="Press Me" onPress={() => {}} disabled testID="button" />
     );
-    
+
     const button = getByTestId('button');
     expect(button.props.accessibilityState.disabled).toBe(true);
   });
@@ -2319,39 +2310,39 @@ describe('VideoService', () => {
   let videoService: VideoService;
   let mockVideoRepository: jest.Mocked<VideoRepository>;
   let mockFileStorage: jest.Mocked<FileStorageService>;
-  
+
   beforeEach(() => {
     mockVideoRepository = new VideoRepository() as jest.Mocked<VideoRepository>;
     mockFileStorage = new FileStorageService() as jest.Mocked<FileStorageService>;
     videoService = new VideoService(mockVideoRepository, mockFileStorage);
   });
-  
+
   it('should create a video with metadata', async () => {
     const mockVideo = {
       id: '123',
       localUri: 'file:///video.mp4',
       duration: 15,
     };
-    
+
     mockVideoRepository.create.mockResolvedValue(mockVideo as any);
-    
+
     const result = await videoService.recordVideo(15);
-    
+
     expect(mockVideoRepository.create).toHaveBeenCalled();
     expect(result.duration).toBe(15);
   });
-  
+
   it('should delete video and associated files', async () => {
     const mockVideo = {
       id: '123',
       localUri: 'file:///video.mp4',
       thumbnailUri: 'file:///thumb.jpg',
     };
-    
+
     mockVideoRepository.findById.mockResolvedValue(mockVideo as any);
-    
+
     await videoService.deleteVideo('123');
-    
+
     expect(mockFileStorage.deleteFile).toHaveBeenCalledWith('file:///video.mp4');
     expect(mockFileStorage.deleteFile).toHaveBeenCalledWith('file:///thumb.jpg');
     expect(mockVideoRepository.delete).toHaveBeenCalledWith('123');
@@ -2369,38 +2360,38 @@ describe('Video Recording Flow', () => {
   beforeAll(async () => {
     await device.launchApp();
   });
-  
+
   beforeEach(async () => {
     await device.reloadReactNative();
   });
-  
+
   it('should record a 15-second video', async () => {
     // Navigate to Record screen
     await element(by.id('record-video-button')).tap();
-    
+
     // Grant permissions (if needed)
     await device.enableSynchronization();
-    
+
     // Wait for camera to initialize
     await detoxExpect(element(by.id('camera-view'))).toBeVisible();
-    
+
     // Tap record button
     await element(by.id('record-button')).tap();
-    
+
     // Wait for recording timer
     await detoxExpect(element(by.id('recording-timer'))).toBeVisible();
-    
+
     // Wait 16 seconds (recording + processing)
     await device.disableSynchronization();
-    await new Promise(resolve => setTimeout(resolve, 16000));
+    await new Promise((resolve) => setTimeout(resolve, 16000));
     await device.enableSynchronization();
-    
+
     // Verify video saved
     await detoxExpect(element(by.text('Video saved!'))).toBeVisible();
-    
+
     // Navigate to gallery
     await element(by.id('view-highlights-button')).tap();
-    
+
     // Verify video appears in gallery
     await detoxExpect(element(by.id('video-card-0'))).toBeVisible();
   });
@@ -2411,10 +2402,10 @@ describe('Video Recording Flow', () => {
 
 #### 11.6.1 Code Comments
 
-```typescript
+````typescript
 /**
  * Service for managing video recording, storage, and retrieval.
- * 
+ *
  * @example
  * ```typescript
  * const videoService = new VideoService(repository, storage);
@@ -2424,7 +2415,7 @@ describe('Video Recording Flow', () => {
 export class VideoService {
   /**
    * Records a video for the specified duration.
-   * 
+   *
    * @param duration - Recording duration in seconds (must be 15 for MVP)
    * @returns Promise resolving to the created Video object
    * @throws {ValidationError} If duration is not 15 seconds
@@ -2434,7 +2425,7 @@ export class VideoService {
     // Implementation
   }
 }
-```
+````
 
 #### 11.6.2 README Structure
 
@@ -2448,15 +2439,18 @@ This directory contains services related to video recording, processing, and man
 ## Services
 
 ### VideoService
+
 Main service for video operations.
 
 **Responsibilities:**
+
 - Recording videos with camera
 - Saving videos to device storage
 - Managing video metadata
 - Generating thumbnails
 
 **Dependencies:**
+
 - VideoRepository
 - FileStorageService
 - ThumbnailService
@@ -2468,6 +2462,7 @@ const video = await videoService.recordVideo(15);
 \`\`\`
 
 ### ThumbnailService
+
 Generates and manages video thumbnails.
 
 ...
@@ -2518,12 +2513,7 @@ Generates and manages video thumbnails.
       },
       "package": "com.gameduel.app",
       "versionCode": 1,
-      "permissions": [
-        "CAMERA",
-        "RECORD_AUDIO",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"
-      ]
+      "permissions": ["CAMERA", "RECORD_AUDIO", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -2652,22 +2642,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run linter
         run: npm run lint
-      
+
       - name: Run tests
         run: npm test -- --coverage
-      
+
       - name: Upload coverage
         uses: codecov/codecov-action@v3
 
@@ -2677,21 +2667,21 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      
+
       - name: Setup Expo
         uses: expo/expo-github-action@v8
         with:
           expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build iOS
         run: eas build --platform ios --non-interactive --no-wait
 
@@ -2701,21 +2691,21 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      
+
       - name: Setup Expo
         uses: expo/expo-github-action@v8
         with:
           expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build Android
         run: eas build --platform android --non-interactive --no-wait
 ```
@@ -2723,6 +2713,7 @@ jobs:
 ### 12.4 Release Process
 
 **MVP Release Checklist:**
+
 1. âœ… All functional requirements implemented and tested
 2. âœ… NFRs validated (performance, security, reliability)
 3. âœ… Code coverage â‰¥ 60% for critical paths
@@ -2735,6 +2726,7 @@ jobs:
 10. âœ… User feedback incorporated
 
 **Build Commands:**
+
 ```bash
 # Production builds
 eas build --platform ios --profile production
@@ -2752,12 +2744,14 @@ eas submit --platform android --profile production
 ### 13.1 Performance
 
 **Targets:**
+
 - Cold start: < 3 seconds (P95)
 - Gallery scrolling: 60 FPS
 - Video recording: < 1 second initialization
 - OAuth flow: < 5 seconds total
 
 **Monitoring:**
+
 - Use React Native Performance Monitor
 - Implement custom timing metrics for critical paths
 - Track FPS during scrolling with FlatList performance props
@@ -2765,11 +2759,13 @@ eas submit --platform android --profile production
 ### 13.2 Reliability
 
 **Targets:**
+
 - Crash rate: < 1% of sessions
 - Video save success rate: â‰¥ 95%
 - OAuth success rate: â‰¥ 90%
 
 **Strategies:**
+
 - Comprehensive error boundaries
 - Retry logic with exponential backoff
 - Graceful degradation for network failures
@@ -2778,6 +2774,7 @@ eas submit --platform android --profile production
 ### 13.3 Security
 
 **Measures:**
+
 - OAuth 2.0 + PKCE for all gaming platform integrations
 - Platform-native secure storage (Keychain/Keystore)
 - HTTPS-only communication
@@ -2787,6 +2784,7 @@ eas submit --platform android --profile production
 ### 13.4 Usability
 
 **Standards:**
+
 - iOS Human Interface Guidelines compliance
 - Material Design compliance
 - Touch targets â‰¥ 44x44pt (iOS) / 48x48dp (Android)
@@ -2797,6 +2795,7 @@ eas submit --platform android --profile production
 ### 13.5 Maintainability
 
 **Practices:**
+
 - Comprehensive TypeScript types (no `any`)
 - Unit test coverage â‰¥ 60% for critical paths
 - Clear separation of concerns (UI, logic, data)
@@ -2807,6 +2806,7 @@ eas submit --platform android --profile production
 ### 13.6 Scalability
 
 **Future-Proofing:**
+
 - Architecture supports SQLite migration at scale
 - Service layer abstraction enables backend addition
 - Repository pattern allows storage backend swap
@@ -2819,38 +2819,38 @@ eas submit --platform android --profile production
 
 ### 14.1 Technical Risks
 
-| Risk | Severity | Likelihood | Mitigation |
-|------|----------|------------|------------|
-| **Gaming API rate limits hit** | High | Medium | Aggressive caching, request queuing, background sync |
-| **Video recording fails on some devices** | High | Medium | Extensive device testing, fallback mechanisms |
-| **AsyncStorage performance degrades** | Medium | High | Migration path to SQLite planned, trigger at 1000 videos |
-| **OAuth flow complexity** | Medium | Medium | Use battle-tested libraries, comprehensive error handling |
-| **PSN integration blocked** | Medium | Low | Disclaimer about unofficial API, alternative approaches ready |
-| **App store rejection** | High | Low | Follow all guidelines strictly, prepare appeals |
+| Risk                                      | Severity | Likelihood | Mitigation                                                    |
+| ----------------------------------------- | -------- | ---------- | ------------------------------------------------------------- |
+| **Gaming API rate limits hit**            | High     | Medium     | Aggressive caching, request queuing, background sync          |
+| **Video recording fails on some devices** | High     | Medium     | Extensive device testing, fallback mechanisms                 |
+| **AsyncStorage performance degrades**     | Medium   | High       | Migration path to SQLite planned, trigger at 1000 videos      |
+| **OAuth flow complexity**                 | Medium   | Medium     | Use battle-tested libraries, comprehensive error handling     |
+| **PSN integration blocked**               | Medium   | Low        | Disclaimer about unofficial API, alternative approaches ready |
+| **App store rejection**                   | High     | Low        | Follow all guidelines strictly, prepare appeals               |
 
 ### 14.2 Security Risks
 
-| Risk | Severity | Likelihood | Mitigation |
-|------|----------|------------|------------|
-| **OAuth token theft** | High | Low | PKCE implementation, secure storage, token rotation |
-| **User data exposure** | High | Low | No backend for MVP, all data local and encrypted |
-| **API key exposure** | Medium | Low | Environment variables, never hardcode, .gitignore |
+| Risk                   | Severity | Likelihood | Mitigation                                          |
+| ---------------------- | -------- | ---------- | --------------------------------------------------- |
+| **OAuth token theft**  | High     | Low        | PKCE implementation, secure storage, token rotation |
+| **User data exposure** | High     | Low        | No backend for MVP, all data local and encrypted    |
+| **API key exposure**   | Medium   | Low        | Environment variables, never hardcode, .gitignore   |
 
 ### 14.3 User Experience Risks
 
-| Risk | Severity | Likelihood | Mitigation |
-|------|----------|------------|------------|
-| **Storage constraints** | High | Medium | Warn at 80%, block at 95%, cleanup utilities |
-| **Poor performance on older devices** | Medium | Medium | Target iPhone 8+ / Android 8+, optimize FlatList |
-| **Gaming platform connection failures** | Medium | High | Clear error messages, retry options, help documentation |
+| Risk                                    | Severity | Likelihood | Mitigation                                              |
+| --------------------------------------- | -------- | ---------- | ------------------------------------------------------- |
+| **Storage constraints**                 | High     | Medium     | Warn at 80%, block at 95%, cleanup utilities            |
+| **Poor performance on older devices**   | Medium   | Medium     | Target iPhone 8+ / Android 8+, optimize FlatList        |
+| **Gaming platform connection failures** | Medium   | High       | Clear error messages, retry options, help documentation |
 
 ### 14.4 Business Risks
 
-| Risk | Severity | Likelihood | Mitigation |
-|------|----------|------------|------------|
-| **Low user adoption** | High | Medium | Pre-launch community building, influencer partnerships |
-| **Gaming platforms change API** | Medium | Low | Abstract API clients, monitor changelogs, quick response plan |
-| **Competitor launches similar product** | Medium | Low | Fast execution, focus on quality, community engagement |
+| Risk                                    | Severity | Likelihood | Mitigation                                                    |
+| --------------------------------------- | -------- | ---------- | ------------------------------------------------------------- |
+| **Low user adoption**                   | High     | Medium     | Pre-launch community building, influencer partnerships        |
+| **Gaming platforms change API**         | Medium   | Low        | Abstract API clients, monitor changelogs, quick response plan |
+| **Competitor launches similar product** | Medium   | Low        | Fast execution, focus on quality, community engagement        |
 
 ---
 
@@ -2858,14 +2858,14 @@ eas submit --platform android --profile production
 
 ### 15.1 Glossary
 
-| Term | Definition |
-|------|------------|
-| **AsyncStorage** | React Native's key-value storage system for persistent data |
-| **Expo** | Development platform for React Native apps with managed workflow |
-| **OAuth 2.0** | Authorization framework for secure third-party API access |
-| **PKCE** | Proof Key for Code Exchange - OAuth extension for mobile security |
-| **FlatList** | React Native component for efficient scrolling lists |
-| **SecureStore** | Expo's API for platform-native encrypted storage |
+| Term             | Definition                                                        |
+| ---------------- | ----------------------------------------------------------------- |
+| **AsyncStorage** | React Native's key-value storage system for persistent data       |
+| **Expo**         | Development platform for React Native apps with managed workflow  |
+| **OAuth 2.0**    | Authorization framework for secure third-party API access         |
+| **PKCE**         | Proof Key for Code Exchange - OAuth extension for mobile security |
+| **FlatList**     | React Native component for efficient scrolling lists              |
+| **SecureStore**  | Expo's API for platform-native encrypted storage                  |
 
 ### 15.2 References
 
@@ -2878,20 +2878,21 @@ eas submit --platform android --profile production
 
 ### 15.3 Change Log
 
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.0 | 2025-10-23 | System Architect | Initial architecture document |
+| Version | Date       | Author           | Changes                       |
+| ------- | ---------- | ---------------- | ----------------------------- |
+| 1.0     | 2025-10-23 | System Architect | Initial architecture document |
 
 ---
 
 ## Document Approval
 
-**Architect**: _________________ Date: _______
+**Architect**: **\*\*\*\***\_**\*\*\*\*** Date: **\_\_\_**
 
 **Stakeholders**:
-- Product Manager: _________________ Date: _______
-- Tech Lead: _________________ Date: _______
-- QA Lead: _________________ Date: _______
+
+- Product Manager: **\*\*\*\***\_**\*\*\*\*** Date: **\_\_\_**
+- Tech Lead: **\*\*\*\***\_**\*\*\*\*** Date: **\_\_\_**
+- QA Lead: **\*\*\*\***\_**\*\*\*\*** Date: **\_\_\_**
 
 **Status**: âœ… Complete - Ready for Development
 

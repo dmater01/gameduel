@@ -2,56 +2,61 @@
 
 ## Document Metadata
 
-| Field | Value |
-|-------|-------|
-| **Product Name** | GameDuel |
-| **Document Version** | 1.0 (BMAD-Compatible) |
-| **Target Release** | MVP - Phase 1 |
-| **Product Manager** | [Your Name/Team] |
-| **Status** | Draft |
-| **Date** | October 23, 2025 |
-| **Framework** | BMAD Method Compatible |
+| Field                | Value                  |
+| -------------------- | ---------------------- |
+| **Product Name**     | GameDuel               |
+| **Document Version** | 1.0 (BMAD-Compatible)  |
+| **Target Release**   | MVP - Phase 1          |
+| **Product Manager**  | [Your Name/Team]       |
+| **Status**           | Draft                  |
+| **Date**             | October 23, 2025       |
+| **Framework**        | BMAD Method Compatible |
 
 ---
 
 ## 1. Product Overview
 
 ### 1.1 Product Vision
+
 GameDuel is a mobile application that empowers gaming enthusiasts to create, share, and discover 15-second pre/post-match commentary videos while seamlessly integrating with major gaming platforms (Steam, Xbox Live, PlayStation Network) to enrich content with real-time gaming data and achievements.
 
 ### 1.2 Target Audience
+
 - **Primary**: Gaming enthusiasts aged 16-35 who actively play and share gaming experiences
 - **Secondary**: Content creators in the gaming space looking for quick, engaging content formats
 - **Tertiary**: Competitive gamers who want to document and share their gaming journey with contextual data
 
 ### 1.3 Market Positioning
+
 GameDuel fills the gap between full-length gaming content platforms (Twitch, YouTube) and static social media posts by offering a quick, contextual way to share gaming moments with integrated performance data.
 
 ### 1.4 Success Metrics
 
-| Category | Metric | Target | Priority |
-|----------|--------|--------|----------|
-| User Engagement | Daily Active Users (DAU) | TBD | P0 |
-| User Engagement | Videos per user per week | ≥ 3 | P0 |
-| User Engagement | Session duration (minutes) | ≥ 5 min | P1 |
-| Platform Integration | Users with connected gaming accounts | ≥ 60% | P0 |
-| Technical Performance | App crash rate | < 1% | P0 |
-| Technical Performance | Video recording success rate | ≥ 95% | P0 |
-| Technical Performance | App startup time | < 3 sec | P1 |
-| Content Quality | Video completion rate (viewers) | ≥ 70% | P2 |
-| Retention | Day 7 retention rate | ≥ 40% | P1 |
-| Retention | Day 30 retention rate | ≥ 20% | P2 |
+| Category              | Metric                               | Target  | Priority |
+| --------------------- | ------------------------------------ | ------- | -------- |
+| User Engagement       | Daily Active Users (DAU)             | TBD     | P0       |
+| User Engagement       | Videos per user per week             | ≥ 3     | P0       |
+| User Engagement       | Session duration (minutes)           | ≥ 5 min | P1       |
+| Platform Integration  | Users with connected gaming accounts | ≥ 60%   | P0       |
+| Technical Performance | App crash rate                       | < 1%    | P0       |
+| Technical Performance | Video recording success rate         | ≥ 95%   | P0       |
+| Technical Performance | App startup time                     | < 3 sec | P1       |
+| Content Quality       | Video completion rate (viewers)      | ≥ 70%   | P2       |
+| Retention             | Day 7 retention rate                 | ≥ 40%   | P1       |
+| Retention             | Day 30 retention rate                | ≥ 20%   | P2       |
 
 ---
 
 ## 2. Functional Requirements (FRs)
 
 ### FR-001: User Authentication & Profile Management
+
 **Priority**: P0  
 **Epic**: #1.0 User Management  
 **Description**: Users must be able to create accounts, authenticate, and manage their profiles.
 
 **Acceptance Criteria**:
+
 - Users can register with email/password
 - Users can log in and log out
 - Users can view and edit their profile information (username, avatar, email)
@@ -61,11 +66,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### FR-002: 15-Second Video Recording
+
 **Priority**: P0  
 **Epic**: #2.0 Video Capture & Management  
 **Description**: Users must be able to record 15-second video clips with camera controls and real-time timer display.
 
 **Acceptance Criteria**:
+
 - Camera interface opens when user taps "Record Video"
 - System enforces strict 15-second recording limit
 - Real-time countdown timer displays during recording (15...14...13...)
@@ -78,11 +85,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### FR-003: Video Storage & Library Management
+
 **Priority**: P0  
 **Epic**: #2.0 Video Capture & Management  
 **Description**: System must automatically save recorded videos to device storage and maintain an organized library.
 
 **Acceptance Criteria**:
+
 - Videos auto-save to device media library upon completion
 - System creates and maintains internal video gallery
 - Videos are tagged with metadata (timestamp, duration, type)
@@ -94,11 +103,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### FR-004: Video Gallery & Filtering
+
 **Priority**: P0  
 **Epic**: #2.0 Video Capture & Management  
 **Description**: Users must be able to view, filter, and manage their video library.
 
 **Acceptance Criteria**:
+
 - Gallery displays video thumbnails in grid/list view
 - Users can filter videos by: All, Commentary, Highlights
 - Each video shows metadata (date, duration, view count)
@@ -110,11 +121,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### FR-005: Steam Platform Integration
+
 **Priority**: P0  
 **Epic**: #3.0 Gaming Platform Integrations  
 **Description**: Users must be able to connect their Steam accounts to enrich videos with gaming data.
 
 **Acceptance Criteria**:
+
 - Users can initiate Steam connection from Profile screen
 - System implements OAuth 2.0 authentication flow with Steam Web API
 - Upon successful connection, system retrieves user's Steam ID
@@ -127,11 +140,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### FR-006: Xbox Live Integration
+
 **Priority**: P0  
 **Epic**: #3.0 Gaming Platform Integrations  
 **Description**: Users must be able to connect their Xbox Live accounts to display gamertag and achievements.
 
 **Acceptance Criteria**:
+
 - Users can initiate Xbox connection from Profile screen
 - System implements Microsoft OAuth authentication flow
 - Upon successful connection, system retrieves Gamertag
@@ -144,11 +159,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### FR-007: PlayStation Network Integration
+
 **Priority**: P1  
 **Epic**: #3.0 Gaming Platform Integrations  
 **Description**: Users must be able to connect their PSN accounts to display trophy data and game library.
 
 **Acceptance Criteria**:
+
 - Users can initiate PSN connection from Profile screen
 - System implements Sony OAuth authentication flow
 - Upon successful connection, system retrieves PSN ID
@@ -161,11 +178,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### FR-008: Gaming Context Display
+
 **Priority**: P1  
 **Epic**: #3.0 Gaming Platform Integrations  
 **Description**: System must display relevant gaming data alongside videos when gaming accounts are connected.
 
 **Acceptance Criteria**:
+
 - Videos show game name when associated with gaming session
 - Achievement badges display on relevant videos
 - Playtime/score data displays where applicable
@@ -176,11 +195,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### FR-009: Home Screen Dashboard
+
 **Priority**: P0  
 **Epic**: #4.0 User Interface & Navigation  
 **Description**: App must provide an intuitive home screen with quick access to core features.
 
 **Acceptance Criteria**:
+
 - Home screen displays welcome message with user's name
 - Three primary action cards are prominently displayed:
   - Record Video
@@ -194,11 +215,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### FR-010: Settings & Preferences
+
 **Priority**: P2  
 **Epic**: #1.0 User Management  
 **Description**: Users must be able to configure app settings and preferences.
 
 **Acceptance Criteria**:
+
 - Settings accessible from Profile screen
 - Users can toggle auto-upload preference
 - Users can configure notification preferences
@@ -211,10 +234,12 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ## 3. Non-Functional Requirements (NFRs)
 
 ### NFR-001: Performance
+
 **Priority**: P0  
 **Description**: App must meet strict performance benchmarks to ensure smooth user experience.
 
 **Requirements**:
+
 - App startup time: < 3 seconds (cold start)
 - Video recording initialization: < 1 second
 - Screen transitions: < 300ms with smooth animations
@@ -225,10 +250,12 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### NFR-002: Reliability
+
 **Priority**: P0  
 **Description**: App must maintain high reliability and stability.
 
 **Requirements**:
+
 - App crash rate: < 1% of all sessions
 - Video recording success rate: ≥ 95%
 - Data persistence: 99.9% success rate for saved videos
@@ -239,10 +266,12 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### NFR-003: Security
+
 **Priority**: P0  
 **Description**: App must implement security best practices to protect user data.
 
 **Requirements**:
+
 - All authentication tokens stored securely (iOS Keychain/Android Keystore)
 - OAuth flows implement PKCE (Proof Key for Code Exchange)
 - API communications over HTTPS only
@@ -254,10 +283,12 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### NFR-004: Scalability
+
 **Priority**: P1  
 **Description**: System architecture must support growth in user base and data volume.
 
 **Requirements**:
+
 - Local storage optimization for video metadata
 - Efficient data structures for large video libraries (1000+ videos)
 - Lazy loading for gallery views
@@ -268,10 +299,12 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### NFR-005: Usability
+
 **Priority**: P0  
 **Description**: App must provide intuitive, accessible user experience.
 
 **Requirements**:
+
 - Adherence to iOS Human Interface Guidelines / Material Design
 - Touch targets minimum 44x44pt (iOS) / 48x48dp (Android)
 - Clear visual feedback for all user actions
@@ -283,10 +316,12 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### NFR-006: Compatibility
+
 **Priority**: P0  
 **Description**: App must support target platforms and devices.
 
 **Requirements**:
+
 - iOS: Version 13.0 and above
 - Android: Version 8.0 (API Level 26) and above
 - Platform: React Native with Expo SDK 54
@@ -297,10 +332,12 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### NFR-007: Maintainability
+
 **Priority**: P1  
 **Description**: Codebase must be maintainable and extensible.
 
 **Requirements**:
+
 - Modular component architecture
 - Comprehensive code documentation
 - Consistent coding standards (ESLint configuration)
@@ -312,10 +349,12 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### NFR-008: Localization (Future)
+
 **Priority**: P2  
 **Description**: App structure must support future internationalization.
 
 **Requirements**:
+
 - All user-facing strings externalized
 - UI supports RTL languages (architectural readiness)
 - Date/time formatting respects locale
@@ -327,17 +366,20 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ## 4. Epic Breakdown & User Stories
 
 ### Epic #1.0: User Management
+
 **Description**: Complete user lifecycle including authentication, profile management, and settings.  
 **Priority**: P0  
 **Dependencies**: None  
 **Estimated Effort**: 3-4 sprints
 
 #### Story 1.1: User Registration
+
 **As a** new user  
 **I want to** create an account with email and password  
 **So that** I can access GameDuel features and save my content
 
 **Acceptance Criteria**:
+
 - Registration form validates email format
 - Password must meet security requirements (8+ characters, mix of letters/numbers)
 - System checks for duplicate email addresses
@@ -346,6 +388,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Error messages are clear and actionable
 
 **Technical Notes**:
+
 - Implement using React Context for auth state
 - Use AsyncStorage for persisting auth tokens
 - Form validation with react-hook-form or similar
@@ -353,11 +396,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 1.2: User Login
+
 **As a** returning user  
 **I want to** log in with my credentials  
 **So that** I can access my account and content
 
 **Acceptance Criteria**:
+
 - Login form accepts email and password
 - System validates credentials against database
 - Successful login establishes authenticated session
@@ -366,6 +411,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - "Forgot Password" option available (placeholder for MVP)
 
 **Technical Notes**:
+
 - Implement JWT or similar token-based auth
 - Store tokens securely in Keychain/Keystore
 - Session timeout: 30 days
@@ -373,11 +419,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 1.3: User Profile View
+
 **As an** authenticated user  
 **I want to** view my profile information and statistics  
 **So that** I can track my activity and manage my account
 
 **Acceptance Criteria**:
+
 - Profile displays: avatar (default if not set), username, email
 - Statistics section shows: total videos, total highlights, total views
 - Gaming account connections show status (connected/not connected)
@@ -386,6 +434,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Profile loads within 2 seconds
 
 **Technical Notes**:
+
 - Fetch user data from local state and backend
 - Cache statistics to minimize API calls
 - Implement pull-to-refresh
@@ -393,11 +442,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 1.4: Profile Edit
+
 **As an** authenticated user  
 **I want to** edit my profile information  
 **So that** I can keep my details current
 
 **Acceptance Criteria**:
+
 - Users can edit: username, avatar (choose from device photos)
 - Email changes require verification (future enhancement)
 - Changes save successfully to backend
@@ -406,6 +457,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Cancel option discards changes
 
 **Technical Notes**:
+
 - Use expo-image-picker for avatar selection
 - Implement optimistic updates for better UX
 - Debounce username validation
@@ -413,11 +465,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 1.5: Logout
+
 **As an** authenticated user  
 **I want to** log out of my account  
 **So that** I can secure my account on shared devices
 
 **Acceptance Criteria**:
+
 - Logout button accessible from Profile
 - Confirmation dialog prevents accidental logout
 - Successful logout clears auth tokens
@@ -425,6 +479,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Local cached data is cleared appropriately
 
 **Technical Notes**:
+
 - Clear AsyncStorage auth tokens
 - Reset React Context auth state
 - Clear any sensitive cached data
@@ -432,17 +487,20 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### Epic #2.0: Video Capture & Management
+
 **Description**: Core video recording, storage, and library management functionality.  
 **Priority**: P0  
 **Dependencies**: #1.0 (User Management)  
 **Estimated Effort**: 4-5 sprints
 
 #### Story 2.1: Camera Interface Setup
+
 **As a** user  
 **I want to** access a camera interface optimized for video recording  
 **So that** I can capture my gaming commentary
 
 **Acceptance Criteria**:
+
 - Tapping "Record Video" from Home opens camera interface
 - Camera requests permissions on first use (with clear rationale)
 - Full-screen camera preview displays
@@ -451,6 +509,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Back button returns to previous screen
 
 **Technical Notes**:
+
 - Use expo-camera for camera access
 - Handle permission denied gracefully
 - Implement proper lifecycle handling (pause on background)
@@ -458,11 +517,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 2.2: 15-Second Timer Implementation
+
 **As a** user  
 **I want to** see a countdown timer during recording  
 **So that** I know how much recording time remains
 
 **Acceptance Criteria**:
+
 - Timer displays prominently (top center or similar)
 - Countdown starts at 15 seconds
 - Timer updates every second (15, 14, 13...)
@@ -471,6 +532,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Timer is clearly visible against any background
 
 **Technical Notes**:
+
 - Use setInterval or requestAnimationFrame for accurate timing
 - Consider using expo-av for timer precision
 - Style timer with high contrast
@@ -478,11 +540,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 2.3: Front/Back Camera Toggle
+
 **As a** user  
 **I want to** switch between front and back cameras  
 **So that** I can record myself or my surroundings
 
 **Acceptance Criteria**:
+
 - Camera flip button is always accessible during recording
 - Toggle animation is smooth (< 300ms)
 - Camera toggle preserves recording state
@@ -491,6 +555,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - No video artifacts during toggle
 
 **Technical Notes**:
+
 - Use expo-camera's type prop
 - Implement smooth transition animation
 - Test on various device models
@@ -498,11 +563,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 2.4: Video Recording Control
+
 **As a** user  
 **I want to** start and stop video recording  
 **So that** I can capture my 15-second commentary
 
 **Acceptance Criteria**:
+
 - Large, accessible record button centered at bottom
 - Visual state changes: Ready (white), Recording (red pulse), Processing
 - Haptic feedback on start/stop (iOS vibration, Android vibration)
@@ -511,6 +578,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - System handles interruptions (phone call, notification)
 
 **Technical Notes**:
+
 - Use expo-camera's recordAsync
 - Implement recording state machine
 - Handle edge cases (storage full, battery low)
@@ -518,11 +586,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 2.5: Auto-Save Video
+
 **As a** user  
 **I want my** recorded videos to automatically save  
 **So that** I don't lose my content
 
 **Acceptance Criteria**:
+
 - Video saves to device media library immediately after recording
 - Video also saves to app's internal gallery
 - Save operation shows loading indicator
@@ -531,6 +601,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Video metadata includes: timestamp, duration, resolution
 
 **Technical Notes**:
+
 - Use expo-media-library for device storage
 - Use expo-file-system for app-specific storage
 - Generate thumbnail on save
@@ -539,11 +610,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 2.6: Video Gallery Display
+
 **As a** user  
 **I want to** view all my recorded videos in a gallery  
 **So that** I can browse and manage my content
 
 **Acceptance Criteria**:
+
 - Gallery accessible from Home "View Highlights"
 - Videos display as grid of thumbnails (2-3 columns)
 - Each thumbnail shows: preview image, duration, date
@@ -553,6 +626,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Pull-to-refresh updates gallery
 
 **Technical Notes**:
+
 - Use FlatList with optimizations (windowSize, removeClippedSubviews)
 - Generate thumbnails asynchronously
 - Implement image caching
@@ -560,11 +634,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 2.7: Video Filtering
+
 **As a** user  
 **I want to** filter my videos by type  
 **So that** I can find specific content quickly
 
 **Acceptance Criteria**:
+
 - Filter chips/tabs at top of gallery: All, Commentary, Highlights
 - Tapping filter updates gallery instantly
 - Active filter is clearly indicated
@@ -573,6 +649,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Empty state shows helpful message
 
 **Technical Notes**:
+
 - Filter logic applied to local data array
 - Consider using React Query or similar for state management
 - Implement smooth filter animations
@@ -580,11 +657,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 2.8: Video Playback
+
 **As a** user  
 **I want to** play my recorded videos  
 **So that** I can review my content
 
 **Acceptance Criteria**:
+
 - Tapping thumbnail opens full-screen player
 - Video plays automatically
 - Playback controls: play/pause, seek bar, volume
@@ -594,6 +673,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Playback is smooth without buffering
 
 **Technical Notes**:
+
 - Use expo-av for video playback
 - Implement proper cleanup on unmount
 - Test with various video file sizes
@@ -601,17 +681,20 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### Epic #3.0: Gaming Platform Integrations
+
 **Description**: Integration with Steam, Xbox Live, and PlayStation Network for gaming data enrichment.  
 **Priority**: P0  
 **Dependencies**: #1.0, #2.0  
 **Estimated Effort**: 5-6 sprints
 
 #### Story 3.1: Steam Connection UI
+
 **As a** user  
 **I want to** see Steam connection options in my profile  
 **So that** I can link my Steam account
 
 **Acceptance Criteria**:
+
 - Profile screen shows "Gaming Accounts" section
 - Steam card displays: Steam logo, connection status, "Connect" button
 - Connected state shows: Steam username, "Disconnect" option
@@ -620,6 +703,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Error handling for failed connections
 
 **Technical Notes**:
+
 - Use expo-web-browser for OAuth flow
 - Implement deep linking for OAuth callback
 - Store connection status in user profile
@@ -627,11 +711,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 3.2: Steam OAuth Implementation
+
 **As a** user  
 **I want to** authenticate with Steam  
 **So that** GameDuel can access my gaming data
 
 **Acceptance Criteria**:
+
 - OAuth flow opens Steam login in browser/webview
 - User authenticates with Steam credentials
 - Steam returns authorization code
@@ -640,6 +726,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - User returned to app with success confirmation
 
 **Technical Notes**:
+
 - Implement OAuth 2.0 with PKCE
 - Use Steam Web API for authentication
 - Store tokens in secure storage (Keychain/Keystore)
@@ -648,11 +735,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 3.3: Steam Data Retrieval
+
 **As a** user with connected Steam account  
 **I want to** see my Steam gaming data in GameDuel  
 **So that** I can enrich my videos with context
 
 **Acceptance Criteria**:
+
 - System fetches user's Steam ID upon connection
 - Game library retrieves and displays
 - Recent achievements fetch and display
@@ -661,6 +750,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Handles API rate limits gracefully
 
 **Technical Notes**:
+
 - Use Steam Web API endpoints
 - Implement caching to minimize API calls
 - Background sync every 24 hours or on manual refresh
@@ -669,11 +759,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 3.4: Xbox Live Connection UI
+
 **As a** user  
 **I want to** see Xbox Live connection options  
 **So that** I can link my Xbox account
 
 **Acceptance Criteria**:
+
 - Xbox card displays: Xbox logo, connection status, "Connect" button
 - Connected state shows: Gamertag, "Disconnect" option
 - Tapping "Connect Xbox" initiates Microsoft OAuth
@@ -681,6 +773,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Error handling for failed connections
 
 **Technical Notes**:
+
 - Follow similar pattern to Steam connection
 - Use Microsoft OAuth endpoints
 - Implement deep linking for callback
@@ -688,11 +781,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 3.5: Xbox Live OAuth Implementation
+
 **As a** user  
 **I want to** authenticate with Xbox Live  
 **So that** GameDuel can access my gaming data
 
 **Acceptance Criteria**:
+
 - OAuth flow opens Microsoft login
 - User authenticates with Microsoft credentials
 - Xbox Live authorization granted
@@ -701,6 +796,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Handle Xbox-specific OAuth requirements
 
 **Technical Notes**:
+
 - Implement Microsoft OAuth 2.0
 - Obtain Xbox Live-specific scopes
 - Handle multi-step Xbox authentication if required
@@ -709,11 +805,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 3.6: Xbox Live Data Retrieval
+
 **As a** user with connected Xbox account  
 **I want to** see my Xbox Live data  
 **So that** my videos show my Xbox context
 
 **Acceptance Criteria**:
+
 - System fetches Gamertag
 - Recent achievements display
 - Game history retrieves
@@ -722,6 +820,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Handles API limitations
 
 **Technical Notes**:
+
 - Use Xbox Live API
 - Implement appropriate caching
 - Handle rate limits
@@ -730,28 +829,33 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 3.7: PSN Connection UI
+
 **As a** user  
 **I want to** connect my PlayStation Network account  
 **So that** I can link my PSN data
 
 **Acceptance Criteria**:
+
 - PSN card displays: PlayStation logo, status, "Connect" button
 - Connected state shows: PSN ID, "Disconnect" option
 - Connection initiates Sony OAuth
 - Loading and error states handled
 
 **Technical Notes**:
+
 - Similar pattern to Steam/Xbox
 - Sony-specific OAuth implementation
 
 ---
 
 #### Story 3.8: PSN OAuth Implementation
+
 **As a** user  
 **I want to** authenticate with PlayStation Network  
 **So that** GameDuel can access my PSN data
 
 **Acceptance Criteria**:
+
 - OAuth flow opens Sony login
 - User authenticates securely
 - PSN authorization obtained
@@ -759,6 +863,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - User returned with confirmation
 
 **Technical Notes**:
+
 - Implement Sony OAuth 2.0
 - Handle PSN-specific requirements
 - Secure token storage
@@ -766,11 +871,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 3.9: PSN Data Retrieval
+
 **As a** user with connected PSN account  
 **I want to** see my PSN trophy data  
 **So that** my videos can display my PlayStation achievements
 
 **Acceptance Criteria**:
+
 - System fetches PSN ID
 - Trophy count displays
 - Recent games retrieve
@@ -778,6 +885,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Data enriches video context
 
 **Technical Notes**:
+
 - Use PlayStation Network API
 - Implement caching strategy
 - Handle API limitations
@@ -785,11 +893,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 3.10: Gaming Context Association
+
 **As a** user with gaming accounts connected  
 **I want** my videos to automatically display relevant gaming data  
 **So that** my content has additional context
 
 **Acceptance Criteria**:
+
 - Videos display game name when detectable
 - Achievement badges appear on relevant videos
 - Score/stats show where applicable
@@ -798,6 +908,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Manual tag option for videos (future)
 
 **Technical Notes**:
+
 - Implement logic to associate video timestamp with gaming session
 - May require background gaming session tracking (future)
 - For MVP: manual association or time-based matching
@@ -805,17 +916,20 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### Epic #4.0: User Interface & Navigation
+
 **Description**: Core UI implementation, navigation flows, and design system.  
 **Priority**: P0  
 **Dependencies**: None (can develop in parallel)  
 **Estimated Effort**: 3-4 sprints
 
 #### Story 4.1: Design System Setup
+
 **As a** developer  
 **I want** a consistent design system  
 **So that** the UI is cohesive and maintainable
 
 **Acceptance Criteria**:
+
 - Theme defined with color palette (gaming-themed dark gradients)
 - Typography scale established
 - Spacing system defined (4px/8px base)
@@ -823,6 +937,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Reusable UI components documented
 
 **Technical Notes**:
+
 - Use expo-linear-gradient for gradient backgrounds
 - Define theme in ThemeContext
 - Create base components: Button, Card, Input, etc.
@@ -830,11 +945,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 4.2: Navigation Structure
+
 **As a** developer  
 **I want** a robust navigation system  
 **So that** users can move between screens smoothly
 
 **Acceptance Criteria**:
+
 - React Navigation v7 configured
 - Stack navigator for main flows
 - Tab navigator for bottom navigation (if applicable)
@@ -843,6 +960,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Navigation transitions are smooth (< 300ms)
 
 **Technical Notes**:
+
 - Use @react-navigation/native and @react-navigation/native-stack
 - Configure linking for deep links
 - Implement navigation guards for auth
@@ -850,11 +968,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 4.3: Home Screen Implementation
+
 **As a** user  
 **I want** an intuitive home screen  
 **So that** I can quickly access main features
 
 **Acceptance Criteria**:
+
 - Welcome message displays user's name
 - Three action cards: Record Video, View Highlights, Profile
 - Quick stats show: Videos count, Highlights count, Views count
@@ -863,6 +983,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Screen loads < 2 seconds
 
 **Technical Notes**:
+
 - Implement using React Native components
 - Use linear gradient for background
 - Cards use TouchableOpacity with press feedback
@@ -870,11 +991,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 4.4: Onboarding Flow (First-Time User)
+
 **As a** first-time user  
 **I want** to understand how to use GameDuel  
 **So that** I can get started quickly
 
 **Acceptance Criteria**:
+
 - Welcome screen on first launch
 - 3-4 onboarding slides explaining features
 - "Skip" option available
@@ -883,6 +1006,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Can be accessed later from settings (future)
 
 **Technical Notes**:
+
 - Use AsyncStorage to track first launch
 - Implement swipeable slides (react-native-swiper or similar)
 - Smooth animations
@@ -890,34 +1014,40 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 4.5: Empty States
+
 **As a** user  
 **I want** helpful messages when screens are empty  
 **So that** I understand what to do next
 
 **Acceptance Criteria**:
+
 - Empty gallery shows: "No videos yet. Tap Record to create your first video!"
 - Empty stats show: "Start recording to see your statistics"
 - Each empty state has relevant icon/illustration
 - Call-to-action button where appropriate
 
 **Technical Notes**:
+
 - Create reusable EmptyState component
 - Design friendly, encouraging messaging
 
 ---
 
 #### Story 4.6: Loading States
+
 **As a** user  
 **I want** to see when the app is processing  
 **So that** I know the app is working
 
 **Acceptance Criteria**:
+
 - Spinner/loading indicator during async operations
 - Skeleton screens for data-heavy views
 - Loading indicators are consistent across app
 - Timeout handling for long operations
 
 **Technical Notes**:
+
 - Create reusable LoadingIndicator component
 - Use ActivityIndicator from React Native
 - Consider skeleton screens for better UX
@@ -925,11 +1055,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 4.7: Error Handling UI
+
 **As a** user  
 **I want** clear error messages  
 **So that** I understand what went wrong
 
 **Acceptance Criteria**:
+
 - Error messages are user-friendly (not technical)
 - Actionable guidance provided ("Check connection", "Try again")
 - Retry buttons where appropriate
@@ -937,6 +1069,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Toast notifications for non-critical errors
 
 **Technical Notes**:
+
 - Implement error boundaries for crash prevention
 - Create Toast/Snackbar component
 - Centralized error handling utility
@@ -944,17 +1077,20 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### Epic #5.0: Data & State Management
+
 **Description**: Backend data architecture, state management, and persistence.  
 **Priority**: P0  
 **Dependencies**: All other epics  
 **Estimated Effort**: 2-3 sprints
 
 #### Story 5.1: Local Data Persistence
+
 **As a** user  
 **I want** my data to persist across app sessions  
 **So that** I don't lose my content and settings
 
 **Acceptance Criteria**:
+
 - Auth tokens persist in secure storage
 - User preferences save to AsyncStorage
 - Video metadata cached locally
@@ -962,6 +1098,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Data migration handled for app updates
 
 **Technical Notes**:
+
 - Use expo-secure-store for sensitive data
 - Use AsyncStorage for non-sensitive data
 - Implement data versioning for migrations
@@ -969,11 +1106,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 5.2: Auth State Management
+
 **As a** developer  
 **I want** centralized auth state  
 **So that** authentication is consistent app-wide
 
 **Acceptance Criteria**:
+
 - AuthContext provides auth state globally
 - Login/logout updates auth state
 - Protected routes check auth state
@@ -981,6 +1120,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Session expiry handled gracefully
 
 **Technical Notes**:
+
 - Implement AuthContext with React Context
 - Use useAuth custom hook
 - Implement token refresh logic
@@ -988,11 +1128,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 5.3: Video Metadata Management
+
 **As a** developer  
 **I want** efficient video metadata handling  
 **So that** the app performs well with large video libraries
 
 **Acceptance Criteria**:
+
 - Metadata stored in structured format (JSON)
 - Efficient queries for filtering/sorting
 - Pagination for large datasets
@@ -1000,6 +1142,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Orphaned data cleaned up periodically
 
 **Technical Notes**:
+
 - Consider using SQLite for complex queries (expo-sqlite)
 - Or use AsyncStorage with indexed structure
 - Implement cleanup routines
@@ -1007,11 +1150,13 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 5.4: Gaming Data Sync
+
 **As a** developer  
 **I want** to sync gaming data efficiently  
 **So that** users see up-to-date information
 
 **Acceptance Criteria**:
+
 - Gaming data syncs on connection
 - Background sync every 24 hours
 - Manual refresh option available
@@ -1019,6 +1164,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Failed syncs retry with exponential backoff
 
 **Technical Notes**:
+
 - Implement background fetch (expo-background-fetch)
 - Queue API requests to manage rate limits
 - Store last sync timestamp
@@ -1026,17 +1172,20 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 #### Story 5.5: App Configuration
+
 **As a** developer  
 **I want** centralized app configuration  
 **So that** settings are consistent and manageable
 
 **Acceptance Criteria**:
+
 - Environment variables for API keys
 - Feature flags for gradual rollouts
 - Remote config for dynamic updates (future)
 - Dev/staging/production environments
 
 **Technical Notes**:
+
 - Use expo-constants for config
 - Environment-specific .env files
 - Never commit sensitive keys
@@ -1047,19 +1196,19 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 
 ### 5.1 Technology Stack
 
-| Layer | Technology | Version | Purpose |
-|-------|-----------|---------|---------|
-| **Framework** | React Native | Latest | Cross-platform mobile framework |
-| **Build Tool** | Expo | SDK 54 | Development and build tooling |
-| **Navigation** | React Navigation | v7 | Screen navigation |
-| **State Management** | React Context | Native | Global state (auth, theme) |
-| **Local Storage** | AsyncStorage | Latest | Non-sensitive data persistence |
-| **Secure Storage** | expo-secure-store | Latest | Sensitive data (tokens) |
-| **Camera** | expo-camera | Latest | Video recording |
-| **Media** | expo-av | Latest | Video playback |
-| **Media Library** | expo-media-library | Latest | Device storage access |
-| **UI Styling** | expo-linear-gradient | Latest | Gradient backgrounds |
-| **HTTP Client** | axios or fetch | Latest | API requests |
+| Layer                | Technology           | Version | Purpose                         |
+| -------------------- | -------------------- | ------- | ------------------------------- |
+| **Framework**        | React Native         | Latest  | Cross-platform mobile framework |
+| **Build Tool**       | Expo                 | SDK 54  | Development and build tooling   |
+| **Navigation**       | React Navigation     | v7      | Screen navigation               |
+| **State Management** | React Context        | Native  | Global state (auth, theme)      |
+| **Local Storage**    | AsyncStorage         | Latest  | Non-sensitive data persistence  |
+| **Secure Storage**   | expo-secure-store    | Latest  | Sensitive data (tokens)         |
+| **Camera**           | expo-camera          | Latest  | Video recording                 |
+| **Media**            | expo-av              | Latest  | Video playback                  |
+| **Media Library**    | expo-media-library   | Latest  | Device storage access           |
+| **UI Styling**       | expo-linear-gradient | Latest  | Gradient backgrounds            |
+| **HTTP Client**      | axios or fetch       | Latest  | API requests                    |
 
 ### 5.2 System Architecture
 
@@ -1094,6 +1243,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ### 5.3 Data Models
 
 #### User
+
 ```javascript
 {
   id: string,
@@ -1129,6 +1279,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ```
 
 #### Video
+
 ```javascript
 {
   id: string,
@@ -1157,6 +1308,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ### 5.4 API Integration Specifications
 
 #### Steam Web API
+
 - **Base URL**: `https://api.steampowered.com`
 - **Auth**: API Key + OAuth 2.0
 - **Key Endpoints**:
@@ -1166,6 +1318,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - **Rate Limit**: 100,000 calls/day
 
 #### Xbox Live API
+
 - **Base URL**: `https://xapi.us` (or official Microsoft endpoint)
 - **Auth**: Microsoft OAuth 2.0
 - **Key Endpoints**:
@@ -1175,6 +1328,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - **Rate Limit**: Check Xbox Live policies
 
 #### PlayStation Network API
+
 - **Note**: PSN does not have official public API
 - **Options**:
   - Use unofficial wrapper libraries (check legal/ToS)
@@ -1209,9 +1363,11 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ## 6. Development Phases & Milestones
 
 ### Phase 1: Foundation (Weeks 1-4)
+
 **Goal**: Establish core infrastructure and authentication
 
 **Deliverables**:
+
 - Project setup with Expo and dependencies
 - Navigation structure implemented
 - User authentication (register, login, logout)
@@ -1219,6 +1375,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Design system and UI components
 
 **Success Criteria**:
+
 - Users can create accounts and log in
 - Navigation flows work smoothly
 - UI components are reusable and documented
@@ -1226,9 +1383,11 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### Phase 2: Video Core (Weeks 5-8)
+
 **Goal**: Implement video recording and management
 
 **Deliverables**:
+
 - Camera interface with recording
 - 15-second timer enforcement
 - Camera flip functionality
@@ -1237,6 +1396,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Video playback
 
 **Success Criteria**:
+
 - Users can record 15-second videos
 - Videos save reliably (95%+ success rate)
 - Gallery displays all videos with smooth scrolling
@@ -1245,9 +1405,11 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### Phase 3: Gaming Integration (Weeks 9-14)
+
 **Goal**: Connect gaming platforms and display data
 
 **Deliverables**:
+
 - Steam OAuth and data retrieval
 - Xbox Live OAuth and data retrieval
 - PSN OAuth and data retrieval
@@ -1256,6 +1418,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Background sync for gaming data
 
 **Success Criteria**:
+
 - Users can connect at least one gaming platform
 - Gaming data displays correctly
 - Videos show gaming context when available
@@ -1264,9 +1427,11 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### Phase 4: Polish & Testing (Weeks 15-16)
+
 **Goal**: Refine UX, fix bugs, optimize performance
 
 **Deliverables**:
+
 - Comprehensive testing (unit, integration, E2E)
 - Performance optimization
 - Bug fixes
@@ -1275,6 +1440,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Analytics integration (future)
 
 **Success Criteria**:
+
 - App meets all NFRs (performance, reliability)
 - User testing feedback incorporated
 - Critical bugs resolved
@@ -1283,9 +1449,11 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ---
 
 ### Phase 5: Beta & Launch Prep (Weeks 17-18)
+
 **Goal**: Prepare for production launch
 
 **Deliverables**:
+
 - Beta testing with select users
 - App store assets (screenshots, descriptions)
 - Privacy policy and terms of service
@@ -1294,6 +1462,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Production environment setup
 
 **Success Criteria**:
+
 - Beta users report positive experience
 - App store submissions complete
 - All legal/compliance requirements met
@@ -1303,16 +1472,16 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 
 ## 7. Risks & Mitigation Strategies
 
-| Risk | Impact | Probability | Mitigation |
-|------|--------|-------------|------------|
-| Gaming API access denied | High | Medium | Investigate official partnerships, use documented APIs only |
-| Gaming API rate limits | Medium | High | Implement aggressive caching, background sync, request queuing |
-| Video recording fails on some devices | High | Medium | Test on wide range of devices, implement fallbacks |
-| Storage constraints on devices | Medium | Medium | Implement storage management, warn users, offer cloud storage (future) |
-| OAuth flow complexity | Medium | Medium | Use well-tested libraries, implement comprehensive error handling |
-| Performance issues with large video libraries | Medium | Low | Implement pagination, lazy loading, periodic cleanup |
-| User privacy concerns with gaming data | Medium | Low | Clear privacy policy, user control over data, minimal data collection |
-| App rejection from app stores | High | Low | Follow all guidelines, test thoroughly, prepare appeals |
+| Risk                                          | Impact | Probability | Mitigation                                                             |
+| --------------------------------------------- | ------ | ----------- | ---------------------------------------------------------------------- |
+| Gaming API access denied                      | High   | Medium      | Investigate official partnerships, use documented APIs only            |
+| Gaming API rate limits                        | Medium | High        | Implement aggressive caching, background sync, request queuing         |
+| Video recording fails on some devices         | High   | Medium      | Test on wide range of devices, implement fallbacks                     |
+| Storage constraints on devices                | Medium | Medium      | Implement storage management, warn users, offer cloud storage (future) |
+| OAuth flow complexity                         | Medium | Medium      | Use well-tested libraries, implement comprehensive error handling      |
+| Performance issues with large video libraries | Medium | Low         | Implement pagination, lazy loading, periodic cleanup                   |
+| User privacy concerns with gaming data        | Medium | Low         | Clear privacy policy, user control over data, minimal data collection  |
+| App rejection from app stores                 | High   | Low         | Follow all guidelines, test thoroughly, prepare appeals                |
 
 ---
 
@@ -1369,6 +1538,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ## 10. Success Metrics & KPIs (Detailed)
 
 ### Launch Success (First 30 Days)
+
 - **Downloads**: 1,000+ app installs
 - **Registration**: 70%+ of downloads complete registration
 - **DAU/MAU Ratio**: 20%+
@@ -1376,6 +1546,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - **Gaming Account Connection**: 40%+ of users connect at least 1 gaming platform
 
 ### User Engagement (Ongoing)
+
 - **Videos per Active User per Week**: ≥ 3
 - **Session Frequency**: Users open app 4+ times per week
 - **Session Duration**: Average 5+ minutes per session
@@ -1383,6 +1554,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - **Return Rate**: 40%+ users return Day 7, 20%+ Day 30
 
 ### Technical Performance (Ongoing)
+
 - **Crash Rate**: < 1% of sessions
 - **Recording Success Rate**: ≥ 95%
 - **App Load Time**: < 3 seconds (90th percentile)
@@ -1390,6 +1562,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - **Storage Issues**: < 5% of users encounter storage warnings
 
 ### Platform Integration (Ongoing)
+
 - **Connection Success Rate**: ≥ 90% OAuth flows complete
 - **Data Sync Success**: ≥ 95% of sync attempts succeed
 - **Gaming Context Display**: 60%+ of videos with gaming accounts show context
@@ -1399,6 +1572,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ## 11. Future Enhancements (Post-MVP)
 
 ### Phase 2 Features (3-6 Months Post-Launch)
+
 - Social sharing to Instagram, TikTok, Twitter
 - Basic video editing (trim, rotate, filters)
 - User profiles public/private toggle
@@ -1409,6 +1583,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - User blocking/reporting
 
 ### Phase 3 Features (6-12 Months)
+
 - Social features (follow users, likes, comments)
 - Gaming tournament integration
 - Leaderboards and challenges
@@ -1419,6 +1594,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - Ad monetization
 
 ### Phase 4 Features (12+ Months)
+
 - AI-powered highlight detection from gaming sessions
 - Automated video generation
 - Cross-platform gaming data aggregation
@@ -1433,6 +1609,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 ## 12. Appendices
 
 ### Appendix A: Glossary
+
 - **DAU**: Daily Active Users
 - **MAU**: Monthly Active Users
 - **MVP**: Minimum Viable Product
@@ -1443,6 +1620,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - **FR**: Functional Requirement
 
 ### Appendix B: Reference Links
+
 - **Expo Documentation**: https://docs.expo.dev/
 - **React Navigation**: https://reactnavigation.org/
 - **Steam Web API**: https://partner.steamgames.com/doc/webapi_overview
@@ -1450,6 +1628,7 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 - **PlayStation Network**: (unofficial resources as needed)
 
 ### Appendix C: Contact & Stakeholders
+
 - **Product Manager**: [Name/Email]
 - **Tech Lead**: [Name/Email]
 - **Design Lead**: [Name/Email]
@@ -1459,24 +1638,26 @@ GameDuel fills the gap between full-length gaming content platforms (Twitch, You
 
 ## Document Change Log
 
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.0 | 2025-10-23 | [PM Name] | Initial BMAD-compatible PRD created from original outline |
+| Version | Date       | Author    | Changes                                                   |
+| ------- | ---------- | --------- | --------------------------------------------------------- |
+| 1.0     | 2025-10-23 | [PM Name] | Initial BMAD-compatible PRD created from original outline |
 
 ---
 
 ## Sign-Off
 
 This PRD represents the complete requirements for GameDuel MVP and is ready for:
+
 - ✅ Architecture design (Architect agent)
 - ✅ Epic sharding (Product Owner agent)
 - ✅ Story file creation (Scrum Master agent)
 - ✅ Development execution (Developer agents)
 
 **Approved By**:
-- Product Manager: _________________ Date: _______
-- Technical Architect: _________________ Date: _______
-- Design Lead: _________________ Date: _______
+
+- Product Manager: **\*\*\*\***\_**\*\*\*\*** Date: **\_\_\_**
+- Technical Architect: **\*\*\*\***\_**\*\*\*\*** Date: **\_\_\_**
+- Design Lead: **\*\*\*\***\_**\*\*\*\*** Date: **\_\_\_**
 
 ---
 

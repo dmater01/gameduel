@@ -1,0 +1,106 @@
+{
+  "name": "gameduel",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~54.0.20",
+    "expo-status-bar": "~3.0.8",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.0",
+    "@typescript-eslint/esli{
+  "name": "gameduel",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "private": true,
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md}\"",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "expo": "~54.0.20",
+    "expo-status-bar": "~3.0.8",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}nt-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.2"
+  },
+  "private": true
+},
+{
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md}\"",
+    "prepare": "husky install"
+  }
+},
+{
+  "name": "gameduel",
+  "version": "1.0.0",
+  "scripts": { ... },
+  "dependencies": { ... },
+  "devDependencies": { ... },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}

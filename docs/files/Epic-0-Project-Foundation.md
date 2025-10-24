@@ -2,30 +2,33 @@
 
 ## Epic Metadata
 
-| Field | Value |
-|-------|-------|
-| **Epic ID** | Epic 0 |
-| **Epic Name** | Project Foundation |
-| **Priority** | P0 (Critical) |
-| **Status** | Ready for Development |
-| **Estimated Duration** | 1-2 weeks |
-| **Dependencies** | None (first epic) |
-| **Owner** | Tech Lead + Development Team |
+| Field                  | Value                        |
+| ---------------------- | ---------------------------- |
+| **Epic ID**            | Epic 0                       |
+| **Epic Name**          | Project Foundation           |
+| **Priority**           | P0 (Critical)                |
+| **Status**             | Ready for Development        |
+| **Estimated Duration** | 1-2 weeks                    |
+| **Dependencies**       | None (first epic)            |
+| **Owner**              | Tech Lead + Development Team |
 
 ---
 
 ## Epic Overview
 
 ### Purpose
+
 Establish the foundational project structure, tooling, and development environment for GameDuel. This epic ensures all developers have a consistent, properly configured codebase before implementing features.
 
 ### Business Value
+
 - **Risk Mitigation**: Prevents inconsistent setups that cause integration issues
 - **Development Velocity**: Clear structure accelerates feature development
 - **Code Quality**: Linting, formatting, and testing infrastructure from day one
 - **Team Alignment**: All developers work from identical configuration
 
 ### Success Criteria
+
 - ✅ Project builds successfully on all developer machines
 - ✅ Linting and formatting work automatically
 - ✅ Test infrastructure runs successfully
@@ -34,6 +37,7 @@ Establish the foundational project structure, tooling, and development environme
 - ✅ CI/CD pipeline successfully builds the app
 
 ### Epic Acceptance Criteria
+
 - [ ] `npm start` launches Expo development server successfully
 - [ ] `npm run lint` executes without errors
 - [ ] `npm test` runs Jest tests successfully
@@ -58,6 +62,7 @@ Establish the foundational project structure, tooling, and development environme
 ## Story 0.1: Initialize Expo Project
 
 ### Story Metadata
+
 ```yaml
 id: story-0.1
 title: Initialize Expo Project with TypeScript
@@ -70,14 +75,17 @@ status: Ready
 ```
 
 ### User Story
+
 **As a** developer  
 **I want** a properly initialized Expo project with TypeScript  
 **So that** I can start building features with type safety and modern tooling
 
 ### Context
+
 This is the first story in the entire project. We need to create the base React Native project using Expo's managed workflow with TypeScript support.
 
 ### Acceptance Criteria
+
 - [ ] Expo project initialized using `npx create-expo-app gameduel --template expo-template-blank-typescript`
 - [ ] Project runs successfully with `npm start`
 - [ ] TypeScript compilation works without errors
@@ -89,6 +97,7 @@ This is the first story in the entire project. We need to create the base React 
 ### Technical Implementation Notes
 
 **Commands to Execute:**
+
 ```bash
 # Initialize project
 npx create-expo-app gameduel --template expo-template-blank-typescript
@@ -108,6 +117,7 @@ git commit -m "Initial project setup with Expo + TypeScript"
 ```
 
 **Expected Project Structure After Initialization:**
+
 ```
 gameduel/
 ├── App.tsx                 # Main entry point
@@ -124,12 +134,14 @@ gameduel/
 ```
 
 **Verification Steps:**
+
 1. Run `npm start` - Expo DevTools should open
 2. Press `i` for iOS simulator - App should load
 3. Press `a` for Android emulator - App should load
 4. Verify TypeScript is working: Add type error in App.tsx, should show red squiggly
 
 ### Definition of Done
+
 - [ ] Project initializes without errors
 - [ ] App runs on iOS Simulator
 - [ ] App runs on Android Emulator
@@ -140,9 +152,11 @@ gameduel/
 - [ ] Changes committed to `main` branch
 
 ### Blockers / Dependencies
+
 - **None** - This is the first story
 
 ### Notes
+
 - Use the TypeScript template (not JavaScript)
 - Ensure Node version is 18+ (as per Architecture requirements)
 - If Expo CLI not installed globally: `npm install -g expo-cli`
@@ -152,6 +166,7 @@ gameduel/
 ## Story 0.2: Configure Code Quality Tools
 
 ### Story Metadata
+
 ```yaml
 id: story-0.2
 title: Configure ESLint, Prettier, and Git Hooks
@@ -164,14 +179,17 @@ status: Ready
 ```
 
 ### User Story
+
 **As a** developer  
 **I want** automated code quality tools configured  
 **So that** the codebase maintains consistent style and catches errors early
 
 ### Context
+
 Per Architecture Section 11.1-11.3, we need ESLint for code quality, Prettier for formatting, and git hooks to enforce standards before commits.
 
 ### Acceptance Criteria
+
 - [ ] ESLint installed and configured with React Native + TypeScript rules
 - [ ] Prettier installed and configured with project style guide
 - [ ] Husky installed for git hooks
@@ -185,6 +203,7 @@ Per Architecture Section 11.1-11.3, we need ESLint for code quality, Prettier fo
 ### Technical Implementation Notes
 
 **Dependencies to Install:**
+
 ```bash
 npm install --save-dev eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
 npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
@@ -193,12 +212,10 @@ npm install --save-dev husky lint-staged
 ```
 
 **ESLint Configuration** (.eslintrc.json):
+
 ```json
 {
-  "extends": [
-    "expo",
-    "prettier"
-  ],
+  "extends": ["expo", "prettier"],
   "plugins": ["prettier", "react-hooks"],
   "rules": {
     "prettier/prettier": "error",
@@ -219,6 +236,7 @@ npm install --save-dev husky lint-staged
 ```
 
 **Prettier Configuration** (.prettierrc):
+
 ```json
 {
   "semi": true,
@@ -231,6 +249,7 @@ npm install --save-dev husky lint-staged
 ```
 
 **Package.json Scripts:**
+
 ```json
 {
   "scripts": {
@@ -244,6 +263,7 @@ npm install --save-dev husky lint-staged
 ```
 
 **Husky Pre-commit Hook:**
+
 ```bash
 # Initialize husky
 npx husky install
@@ -253,21 +273,18 @@ npx husky add .husky/pre-commit "npx lint-staged"
 ```
 
 **lint-staged Configuration** (package.json):
+
 ```json
 {
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
+    "*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{json,md}": ["prettier --write"]
   }
 }
 ```
 
 **VS Code Settings** (.vscode/settings.json):
+
 ```json
 {
   "editor.formatOnSave": true,
@@ -280,6 +297,7 @@ npx husky add .husky/pre-commit "npx lint-staged"
 ```
 
 ### Verification Steps
+
 1. Create a file with intentional style violations
 2. Run `npm run lint` - should show errors
 3. Run `npm run lint:fix` - should auto-fix
@@ -287,6 +305,7 @@ npx husky add .husky/pre-commit "npx lint-staged"
 5. Fix errors and commit - should succeed
 
 ### Definition of Done
+
 - [ ] ESLint configuration file created
 - [ ] Prettier configuration file created
 - [ ] Husky git hooks installed
@@ -298,9 +317,11 @@ npx husky add .husky/pre-commit "npx lint-staged"
 - [ ] Code reviewed and merged
 
 ### Blockers / Dependencies
+
 - **Requires**: Story 0.1 (project must exist)
 
 ### Notes
+
 - Follow exact configuration from Architecture Section 11.1
 - Test pre-commit hook by intentionally breaking style
 - Ensure all team members install VS Code Prettier extension
@@ -310,6 +331,7 @@ npx husky add .husky/pre-commit "npx lint-staged"
 ## Story 0.3: Set Up Project Directory Structure
 
 ### Story Metadata
+
 ```yaml
 id: story-0.3
 title: Create Project Directory Structure
@@ -322,14 +344,17 @@ status: Ready
 ```
 
 ### User Story
+
 **As a** developer  
 **I want** the project directory structure to match the architecture  
 **So that** I know exactly where to place new files and code
 
 ### Context
+
 Architecture Section 5.2 defines a comprehensive directory structure. We need to create all folders and placeholder files with README.md in each directory explaining its purpose.
 
 ### Acceptance Criteria
+
 - [ ] All directories from Architecture Section 5.2 created
 - [ ] Each major directory contains README.md explaining its purpose
 - [ ] Placeholder index.ts files in appropriate directories
@@ -341,6 +366,7 @@ Architecture Section 5.2 defines a comprehensive directory structure. We need to
 ### Technical Implementation Notes
 
 **Directory Structure to Create:**
+
 ```
 src/
 ├── screens/                    # Screen components
@@ -393,6 +419,7 @@ docs/                           # Documentation
 ```
 
 **Create Script** (create-structure.sh):
+
 ```bash
 #!/bin/bash
 
@@ -410,20 +437,25 @@ echo "Directory structure created successfully!"
 ```
 
 **README Template for Each Directory:**
+
 ```markdown
 # [Directory Name]
 
 ## Purpose
+
 [Brief description of what files belong here]
 
 ## Examples
+
 [Examples of files that should be in this directory]
 
 ## Related Documentation
+
 - [Link to relevant architecture section]
 ```
 
 **tsconfig.json Path Aliases:**
+
 ```json
 {
   "compilerOptions": {
@@ -451,67 +483,82 @@ echo "Directory structure created successfully!"
 **Example README Files to Create:**
 
 **/src/screens/README.md:**
+
 ```markdown
 # Screens
 
 ## Purpose
+
 Screen components represent full-page views in the application. Each screen typically corresponds to a route in the navigation.
 
 ## Structure
+
 Each screen should have its own folder containing:
+
 - `[ScreenName].tsx` - Main screen component
 - `[ScreenName].styles.ts` - Screen-specific styles
 - `[ScreenName].test.tsx` - Screen tests (optional for MVP)
 
 ## Examples
+
 - `home/HomeScreen.tsx`
 - `record/RecordScreen.tsx`
 - `gallery/GalleryScreen.tsx`
 
 ## Guidelines
+
 - Screens orchestrate multiple components
 - Screens connect to contexts and hooks
 - Screens should NOT contain business logic (use services/hooks)
 - Keep screens focused on composition and layout
 
 ## Related Documentation
+
 - Architecture Section 6.1.1 (Screen Components)
 ```
 
 **/src/components/README.md:**
+
 ```markdown
 # Components
 
 ## Purpose
+
 Reusable UI components used across multiple screens.
 
 ## Structure
+
 - `common/` - Generic components (Button, Card, Input, etc.)
 - `video/` - Video-specific components
 - `gaming/` - Gaming-related components
 
 Each component should have its own folder:
+
 - `[Component].tsx` - Component implementation
 - `[Component].styles.ts` - Component styles
 - `[Component].test.tsx` - Component tests
 
 ## Guidelines
+
 - Components should be reusable and composable
 - Use TypeScript interfaces for props
 - Document props with JSDoc comments
 - Follow React best practices (memo, useCallback, etc.)
 
 ## Related Documentation
+
 - Architecture Section 6.1.2 (Component Hierarchy)
 ```
 
 ### Verification Steps
+
 1. Run `tree src` or `ls -R src` to verify structure
 2. Test path alias: Create file `src/utils/test.ts` and import using `@/utils/test`
 3. Verify TypeScript recognizes imports
 4. Check all directories have README.md
 
 ### Definition of Done
+
 - [ ] All directories created
 - [ ] README.md in each major directory
 - [ ] Path aliases configured
@@ -520,9 +567,11 @@ Each component should have its own folder:
 - [ ] Code reviewed and merged
 
 ### Blockers / Dependencies
+
 - **Requires**: Story 0.1 (project must exist)
 
 ### Notes
+
 - Refer to Architecture Section 5.2 for exact structure
 - Empty directories need .gitkeep to be tracked by git
 - Path aliases improve import readability
@@ -532,6 +581,7 @@ Each component should have its own folder:
 ## Story 0.4: Install Core Dependencies
 
 ### Story Metadata
+
 ```yaml
 id: story-0.4
 title: Install Core Dependencies and Libraries
@@ -544,14 +594,17 @@ status: Ready
 ```
 
 ### User Story
+
 **As a** developer  
 **I want** all core dependencies installed and configured  
 **So that** I can use them when implementing features
 
 ### Context
+
 Architecture Section 4.1 defines the complete technology matrix. We need to install all P0 (critical) dependencies that will be used throughout the project.
 
 ### Acceptance Criteria
+
 - [ ] All dependencies from Architecture Section 4.1 installed
 - [ ] Package versions match architecture specifications
 - [ ] React Navigation configured with basic stack navigator
@@ -564,6 +617,7 @@ Architecture Section 4.1 defines the complete technology matrix. We need to inst
 ### Technical Implementation Notes
 
 **Core Dependencies to Install:**
+
 ```bash
 # Navigation
 npm install @react-navigation/native @react-navigation/stack
@@ -600,6 +654,7 @@ npm install date-fns
 ```
 
 **Dev Dependencies:**
+
 ```bash
 # Type Definitions
 npm install --save-dev @types/react @types/react-native
@@ -613,6 +668,7 @@ npm install --save-dev jest @testing-library/react-native @testing-library/jest-
 ```
 
 **Verify Installation:**
+
 ```typescript
 // Create src/config/dependencies.test.ts
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -635,6 +691,7 @@ console.log('All dependencies imported successfully! ✅');
 ```
 
 **Basic Navigation Setup** (src/navigation/AppNavigator.tsx):
+
 ```typescript
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -662,6 +719,7 @@ export const AppNavigator = () => {
 ```
 
 **Update App.tsx:**
+
 ```typescript
 import React from 'react';
 import { AppNavigator } from './src/navigation/AppNavigator';
@@ -672,6 +730,7 @@ export default function App() {
 ```
 
 **Package.json Verification Script:**
+
 ```json
 {
   "scripts": {
@@ -681,6 +740,7 @@ export default function App() {
 ```
 
 ### Verification Steps
+
 1. Run `npm install` - should complete without errors
 2. Run `npm start` - app should load
 3. Check for dependency warnings in console
@@ -688,6 +748,7 @@ export default function App() {
 5. Check package-lock.json for version conflicts
 
 ### Definition of Done
+
 - [ ] All dependencies installed
 - [ ] No version conflicts
 - [ ] Basic navigation renders
@@ -696,9 +757,11 @@ export default function App() {
 - [ ] Code reviewed and merged
 
 ### Blockers / Dependencies
+
 - **Requires**: Story 0.1 (project must exist)
 
 ### Notes
+
 - Exact versions specified in Architecture Section 4.1
 - Some dependencies (expo-camera, etc.) require additional native configuration - this happens automatically with Expo
 - Navigation setup is minimal for now; will be expanded in Epic 1
@@ -708,6 +771,7 @@ export default function App() {
 ## Story 0.5: Configure Testing Infrastructure
 
 ### Story Metadata
+
 ```yaml
 id: story-0.5
 title: Set Up Jest and Testing Infrastructure
@@ -720,14 +784,17 @@ status: Ready
 ```
 
 ### User Story
+
 **As a** developer  
 **I want** testing infrastructure configured from the start  
 **So that** I can write tests alongside features
 
 ### Context
+
 Per Architecture Section 11.5, we need Jest for unit/integration tests. This story sets up the testing framework so all future stories can include tests.
 
 ### Acceptance Criteria
+
 - [ ] Jest configured with React Native preset
 - [ ] React Native Testing Library installed
 - [ ] Test utilities and helpers directory created
@@ -740,6 +807,7 @@ Per Architecture Section 11.5, we need Jest for unit/integration tests. This sto
 ### Technical Implementation Notes
 
 **Testing Dependencies** (partially installed in Story 0.4):
+
 ```bash
 npm install --save-dev jest @testing-library/react-native @testing-library/jest-native
 npm install --save-dev @types/jest
@@ -747,6 +815,7 @@ npm install --save-dev jest-expo
 ```
 
 **Jest Configuration** (jest.config.js):
+
 ```javascript
 module.exports = {
   preset: 'jest-expo',
@@ -780,7 +849,8 @@ module.exports = {
 };
 ```
 
-**Test Setup File** (src/__tests__/setup.ts):
+**Test Setup File** (src/**tests**/setup.ts):
+
 ```typescript
 import '@testing-library/jest-native/extend-expect';
 
@@ -805,7 +875,8 @@ global.console = {
 };
 ```
 
-**Test Utilities** (src/__tests__/helpers/testUtils.tsx):
+**Test Utilities** (src/**tests**/helpers/testUtils.tsx):
+
 ```typescript
 import React from 'react';
 import { render, RenderOptions } from '@testing-library/react-native';
@@ -828,7 +899,8 @@ export * from '@testing-library/react-native';
 export { customRender as render };
 ```
 
-**Mock Helpers** (src/__tests__/mocks/index.ts):
+**Mock Helpers** (src/**tests**/mocks/index.ts):
+
 ```typescript
 // Mock user data
 export const mockUser = {
@@ -864,6 +936,7 @@ export const mockVideo = {
 ```
 
 **Sample Test File** (src/components/common/Button/Button.test.tsx):
+
 ```typescript
 import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
@@ -891,6 +964,7 @@ describe('Button Component', () => {
 ```
 
 **Package.json Scripts:**
+
 ```json
 {
   "scripts": {
@@ -903,12 +977,14 @@ describe('Button Component', () => {
 ```
 
 ### Verification Steps
+
 1. Run `npm test` - sample test should pass
 2. Run `npm run test:coverage` - should show coverage report
 3. Verify test output shows "1 passed, 1 total"
 4. Check coverage/lcov-report/index.html for visual report
 
 ### Definition of Done
+
 - [ ] Jest configuration complete
 - [ ] Test setup file created
 - [ ] Test utilities and mocks created
@@ -918,9 +994,11 @@ describe('Button Component', () => {
 - [ ] Code reviewed and merged
 
 ### Blockers / Dependencies
+
 - **Requires**: Story 0.1 (project), Story 0.4 (dependencies)
 
 ### Notes
+
 - Coverage threshold: 60% (Architecture Section 11.5)
 - Detox (E2E testing) will be added in Epic 4 (Polish phase)
 - Mock all Expo modules to avoid native module errors in tests
@@ -930,6 +1008,7 @@ describe('Button Component', () => {
 ## Story 0.6: Set Up CI/CD Pipeline
 
 ### Story Metadata
+
 ```yaml
 id: story-0.6
 title: Configure GitHub Actions CI/CD Pipeline
@@ -942,14 +1021,17 @@ status: Ready
 ```
 
 ### User Story
+
 **As a** developer  
 **I want** automated CI/CD running on every commit  
 **So that** we catch errors early and maintain code quality
 
 ### Context
+
 Architecture Section 12.3 defines the CI/CD pipeline using GitHub Actions. We need automated linting, testing, and builds on every push/PR.
 
 ### Acceptance Criteria
+
 - [ ] GitHub Actions workflow file created
 - [ ] Workflow runs on push to main and develop branches
 - [ ] Workflow runs on all pull requests
@@ -962,6 +1044,7 @@ Architecture Section 12.3 defines the CI/CD pipeline using GitHub Actions. We ne
 ### Technical Implementation Notes
 
 **GitHub Actions Workflow** (.github/workflows/ci.yml):
+
 ```yaml
 name: CI
 
@@ -1021,6 +1104,7 @@ jobs:
 ```
 
 **README Badge:**
+
 ```markdown
 # GameDuel
 
@@ -1031,6 +1115,7 @@ jobs:
 ```
 
 **Branch Protection Rules** (Configure in GitHub Settings):
+
 - Require PR reviews: 1
 - Require status checks to pass:
   - `lint-and-test`
@@ -1039,6 +1124,7 @@ jobs:
 - Dismiss stale PR approvals
 
 ### Verification Steps
+
 1. Create a new branch with intentional lint error
 2. Push and create PR
 3. Verify CI runs and fails
@@ -1047,6 +1133,7 @@ jobs:
 6. Check Codecov report
 
 ### Definition of Done
+
 - [ ] GitHub Actions workflow created
 - [ ] CI runs successfully on clean code
 - [ ] CI fails on linting errors
@@ -1057,10 +1144,12 @@ jobs:
 - [ ] Documentation updated
 
 ### Blockers / Dependencies
+
 - **Requires**: Story 0.2 (linting), Story 0.5 (tests)
 - **Requires**: GitHub repository
 
 ### Notes
+
 - Codecov account needed for coverage reporting
 - CI must pass before merging to main
 - Builds for iOS/Android will be added in Epic 4
@@ -1070,6 +1159,7 @@ jobs:
 ## Story 0.7: Create Project Documentation
 
 ### Story Metadata
+
 ```yaml
 id: story-0.7
 title: Create Developer Documentation and README
@@ -1082,14 +1172,17 @@ status: Ready
 ```
 
 ### User Story
+
 **As a** new developer joining the project  
 **I want** comprehensive setup documentation  
 **So that** I can get started quickly without confusion
 
 ### Context
+
 We need clear documentation for developers to understand the project structure, setup process, and development workflow.
 
 ### Acceptance Criteria
+
 - [ ] README.md contains comprehensive setup instructions
 - [ ] CONTRIBUTING.md created with development guidelines
 - [ ] docs/ARCHITECTURE.md created (summary with link to full doc)
@@ -1101,6 +1194,7 @@ We need clear documentation for developers to understand the project structure, 
 ### Technical Implementation Notes
 
 **README.md Structure:**
+
 ```markdown
 # GameDuel
 
@@ -1113,6 +1207,7 @@ GameDuel is a mobile app that empowers gaming enthusiasts to create 15-second pr
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 - Expo CLI: `npm install -g expo-cli`
@@ -1121,14 +1216,18 @@ GameDuel is a mobile app that empowers gaming enthusiasts to create 15-second pr
 ### Installation
 
 \`\`\`bash
+
 # Clone the repository
+
 git clone https://github.com/[username]/gameduel.git
 cd gameduel
 
 # Install dependencies
+
 npm install
 
 # Start development server
+
 npm start
 \`\`\`
 
@@ -1139,14 +1238,14 @@ Press `i` for iOS simulator or `a` for Android emulator.
 \`\`\`
 gameduel/
 ├── src/
-│   ├── screens/           # Screen components
-│   ├── components/        # Reusable components
-│   ├── navigation/        # Navigation setup
-│   ├── services/          # Business logic
-│   ├── models/            # TypeScript types
-│   └── ...
-├── assets/                # Images, icons, fonts
-├── docs/                  # Documentation
+│ ├── screens/ # Screen components
+│ ├── components/ # Reusable components
+│ ├── navigation/ # Navigation setup
+│ ├── services/ # Business logic
+│ ├── models/ # TypeScript types
+│ └── ...
+├── assets/ # Images, icons, fonts
+├── docs/ # Documentation
 └── README.md
 \`\`\`
 
@@ -1165,6 +1264,7 @@ See [Directory Structure](./docs/ARCHITECTURE.md) for details.
 ### Code Quality
 
 This project uses:
+
 - **ESLint** for code linting
 - **Prettier** for code formatting
 - **Husky** for git hooks
@@ -1183,13 +1283,17 @@ Pre-commit hooks ensure code quality before commits.
 ## 🧪 Testing
 
 \`\`\`bash
+
 # Run all tests
+
 npm test
 
 # Watch mode
+
 npm run test:watch
 
 # Coverage report
+
 npm run test:coverage
 \`\`\`
 
@@ -1228,6 +1332,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for development guidelines.
 ```
 
 **CONTRIBUTING.md:**
+
 ```markdown
 # Contributing to GameDuel
 
@@ -1297,22 +1402,26 @@ Contact the Tech Lead or post in the team channel.
 ```
 
 **docs/DEVELOPMENT.md:**
+
 ```markdown
 # Development Workflow
 
 ## Daily Development
 
 ### Starting Work
+
 1. Pull latest changes: `git pull origin develop`
 2. Create feature branch: `git checkout -b feature/story-X.X`
 3. Start dev server: `npm start`
 
 ### During Development
+
 - Run linter frequently: `npm run lint`
 - Write tests alongside code
 - Commit often with clear messages
 
 ### Before Committing
+
 - Run full test suite: `npm test`
 - Verify linting: `npm run lint`
 - Check formatting: `npm run format:check`
@@ -1322,6 +1431,7 @@ Pre-commit hooks will run automatically.
 ## Story Development Process
 
 Follow the BMAD method:
+
 1. Read story file thoroughly
 2. Implement acceptance criteria
 3. Write tests
@@ -1333,12 +1443,14 @@ Follow the BMAD method:
 ## Environment Setup
 
 ### Required Tools
+
 - Node.js 18+
 - Expo CLI
 - Xcode (for iOS development)
 - Android Studio (for Android development)
 
 ### Optional Tools
+
 - React Native Debugger
 - Reactotron
 - VS Code with extensions:
@@ -1349,12 +1461,14 @@ Follow the BMAD method:
 ## Debugging
 
 ### React Native Debugger
+
 1. Install: `brew install --cask react-native-debugger`
 2. Open before starting Expo
 3. Shake device/simulator to open debug menu
 4. Select "Debug with Chrome"
 
 ### Console Logging
+
 - Use `console.log` for development
 - Use `console.warn` for warnings
 - Use `console.error` for errors
@@ -1363,6 +1477,7 @@ Follow the BMAD method:
 ## Common Workflows
 
 ### Adding a New Component
+
 1. Create folder: `src/components/[category]/[ComponentName]/`
 2. Create files:
    - `[ComponentName].tsx`
@@ -1373,6 +1488,7 @@ Follow the BMAD method:
 5. Use component in screen
 
 ### Adding a New Screen
+
 1. Create folder: `src/screens/[screen-name]/`
 2. Create screen component
 3. Add to navigation
@@ -1380,6 +1496,7 @@ Follow the BMAD method:
 5. Connect to context/hooks
 
 ### Adding a New Service
+
 1. Create: `src/services/[service-name]/[ServiceName].ts`
 2. Define interface
 3. Implement business logic
@@ -1405,12 +1522,14 @@ Follow the BMAD method:
 ```
 
 ### Verification Steps
+
 1. Have new developer follow README setup
 2. Verify all links work
 3. Test troubleshooting steps
 4. Confirm documentation completeness
 
 ### Definition of Done
+
 - [ ] README.md complete
 - [ ] CONTRIBUTING.md created
 - [ ] DEVELOPMENT.md created
@@ -1419,9 +1538,11 @@ Follow the BMAD method:
 - [ ] Code reviewed and merged
 
 ### Blockers / Dependencies
+
 - **Requires**: All previous stories (documentation reflects final setup)
 
 ### Notes
+
 - Keep documentation up-to-date as project evolves
 - Link to full Architecture document (not duplicate content)
 - Use clear, beginner-friendly language
@@ -1431,9 +1552,11 @@ Follow the BMAD method:
 ## Epic 0 Summary
 
 ### Total Estimated Effort
+
 **8-10 days** (1-2 weeks)
 
 ### Story Breakdown
+
 1. Story 0.1: Initialize Project - 2-4 hours
 2. Story 0.2: Configure Code Quality - 3-4 hours
 3. Story 0.3: Directory Structure - 2-3 hours
@@ -1443,6 +1566,7 @@ Follow the BMAD method:
 7. Story 0.7: Documentation - 2-3 hours
 
 ### Dependencies Flow
+
 ```
 0.1 (Initialize)
   ├─> 0.2 (Code Quality)
@@ -1454,6 +1578,7 @@ Follow the BMAD method:
 ```
 
 ### Success Criteria Checklist
+
 - [ ] Project builds successfully
 - [ ] All developers can run locally
 - [ ] Linting and formatting automated
@@ -1463,6 +1588,7 @@ Follow the BMAD method:
 - [ ] Documentation complete
 
 ### Post-Epic Deliverables
+
 - ✅ Fully configured Expo + TypeScript project
 - ✅ Code quality tools operational
 - ✅ Testing infrastructure ready
@@ -1477,6 +1603,7 @@ Follow the BMAD method:
 Once Epic 0 is complete, the team is ready to begin **Epic 1: User Management** (Authentication & Profile).
 
 **Epic 1 Prerequisites** (all met after Epic 0):
+
 - ✅ Project initialized
 - ✅ Development environment ready
 - ✅ Testing framework available

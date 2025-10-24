@@ -2,16 +2,16 @@
 
 ## Epic Metadata
 
-| Field | Value |
-|-------|-------|
-| **Epic ID** | Epic 2.5 |
-| **Epic Name** | Gaming Platform Registration & API Setup |
-| **Priority** | P0 (Critical - Blocks Epic 3) |
-| **Status** | Ready for Immediate Start |
-| **Estimated Duration** | 5-7 days (includes platform approval wait times) |
-| **Dependencies** | Epic 0 (Project Foundation) |
-| **Blocks** | Epic 3 (Gaming Platform Integrations) |
-| **Owner** | User (Platform Registration) + Tech Lead (Configuration) |
+| Field                  | Value                                                    |
+| ---------------------- | -------------------------------------------------------- |
+| **Epic ID**            | Epic 2.5                                                 |
+| **Epic Name**          | Gaming Platform Registration & API Setup                 |
+| **Priority**           | P0 (Critical - Blocks Epic 3)                            |
+| **Status**             | Ready for Immediate Start                                |
+| **Estimated Duration** | 5-7 days (includes platform approval wait times)         |
+| **Dependencies**       | Epic 0 (Project Foundation)                              |
+| **Blocks**             | Epic 3 (Gaming Platform Integrations)                    |
+| **Owner**              | User (Platform Registration) + Tech Lead (Configuration) |
 
 ---
 
@@ -22,6 +22,7 @@
 Gaming platforms require account registration and approval, which can take **3-7 days**. Starting this epic early prevents blocking Epic 3 (Gaming Integration) in Week 9.
 
 **Recommended Timeline:**
+
 - **Week 0-1**: User registers for all three platforms (parallel to Epic 0)
 - **Week 2-8**: Wait for platform approvals (happens during Epic 1 & 2)
 - **Week 8**: Developer configures credentials (before Epic 3)
@@ -32,15 +33,18 @@ Gaming platforms require account registration and approval, which can take **3-7
 ## Epic Overview
 
 ### Purpose
+
 Register GameDuel with Steam, Xbox Live, and PlayStation Network to obtain API credentials required for gaming platform integrations. This epic is split into USER actions (platform registration) and DEVELOPER actions (credential configuration).
 
 ### Business Value
+
 - **Unblock Epic 3**: Gaming integration cannot proceed without API credentials
 - **Risk Mitigation**: Platform approvals take unpredictable time (3-7 days minimum)
 - **Compliance**: Ensures GameDuel operates within platform terms of service
 - **Security**: Proper OAuth setup protects user gaming accounts
 
 ### Success Criteria
+
 - ✅ Steam Web API key obtained and working
 - ✅ Xbox Live application registered with client ID/secret
 - ✅ PSN access strategy determined and implemented
@@ -49,6 +53,7 @@ Register GameDuel with Steam, Xbox Live, and PlayStation Network to obtain API c
 - ✅ OAuth redirect URIs configured correctly
 
 ### Epic Acceptance Criteria
+
 - [ ] User has active developer accounts on Steam and Xbox
 - [ ] Steam Web API key obtained and verified
 - [ ] Xbox Live application created with OAuth credentials
@@ -73,6 +78,7 @@ Register GameDuel with Steam, Xbox Live, and PlayStation Network to obtain API c
 ## Story 2.5.1: Register Steam Partner Account & Obtain API Key
 
 ### Story Metadata
+
 ```yaml
 id: story-2.5.1
 title: Register Steam Partner Account & Obtain API Key
@@ -86,19 +92,23 @@ user_action: true
 ```
 
 ### User Story
+
 **As a** GameDuel product owner  
 **I want** to obtain a Steam Web API key  
 **So that** our app can access user gaming data from Steam
 
 ### Context
+
 Steam provides a Web API for accessing user profiles, game libraries, and achievements. We need an API key to authenticate our requests. This is a **USER action** - the product owner or team member with Steam account must complete this.
 
 ### Pre-requisites
+
 - Personal Steam account (can be created at https://store.steampowered.com)
 - Valid email address
 - Domain name for GameDuel (or localhost for development)
 
 ### Acceptance Criteria
+
 - [ ] Steam developer account created at https://steamcommunity.com/dev
 - [ ] Steam Web API key generated
 - [ ] API key domain configured (or set to localhost for development)
@@ -109,6 +119,7 @@ Steam provides a Web API for accessing user profiles, game libraries, and achiev
 ### Step-by-Step Instructions
 
 #### Step 1: Create/Login to Steam Account
+
 1. Go to https://store.steampowered.com
 2. If you don't have a Steam account:
    - Click "Join Steam" (top right)
@@ -118,11 +129,13 @@ Steam provides a Web API for accessing user profiles, game libraries, and achiev
 3. If you have an account, simply log in
 
 #### Step 2: Access Steam Web API Registration
+
 1. Go to https://steamcommunity.com/dev
 2. You should see "Steam Web API - Publisher Authentication Key"
 3. If prompted, log in with your Steam account
 
 #### Step 3: Generate API Key
+
 1. Read and accept the Steam Web API Terms of Use
 2. In the "Domain Name" field, enter:
    - For development: `localhost` or `127.0.0.1`
@@ -132,9 +145,11 @@ Steam provides a Web API for accessing user profiles, game libraries, and achiev
 4. **Your API key will be displayed** - it looks like: `XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` (32 hex characters)
 
 #### Step 4: Document the API Key
+
 **CRITICAL**: Do NOT commit this key to git or share it publicly!
 
 Create a secure note with the following information:
+
 ```
 Steam Web API Credentials
 ==========================
@@ -149,7 +164,9 @@ https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v1/?key=[YOUR_
 ```
 
 #### Step 5: Test the API Key
+
 1. Open browser or use curl to test:
+
 ```bash
 curl "https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v1/?key=YOUR_API_KEY_HERE"
 ```
@@ -158,24 +175,29 @@ curl "https://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v1/?key=
 3. If you get an error "Access Denied" or "Invalid Key", double-check the key
 
 #### Step 6: Share with Development Team
+
 Share the API key securely via:
+
 - Password manager (1Password, LastPass, Bitwarden)
 - Encrypted messaging (Signal, encrypted email)
 - Team secrets manager (AWS Secrets Manager, Azure Key Vault)
 
 **NEVER:**
+
 - ❌ Commit to git
 - ❌ Send via plain email
 - ❌ Post in Slack/Discord/public channels
 - ❌ Include in screenshots
 
 ### Verification Steps
+
 1. API key obtained successfully
 2. Test endpoint returns valid JSON
 3. Key shared securely with development team
 4. Documentation saved in secure location
 
 ### Definition of Done
+
 - [ ] Steam Web API key obtained
 - [ ] Test API call successful
 - [ ] Key securely documented
@@ -185,27 +207,32 @@ Share the API key securely via:
 ### Troubleshooting
 
 **"I can't access steamcommunity.com/dev"**
+
 - Ensure you're logged into Steam
 - Try a different browser
 - Disable VPN if active
 - Clear browser cache
 
 **"The page says I need a Steam purchase"**
+
 - Some regions require a purchase history
 - Buy the cheapest game (usually < $5)
 - Alternative: Ask a team member with existing Steam account
 
 **"I lost my API key"**
+
 - Go back to https://steamcommunity.com/dev
 - Your existing key will be displayed
 - You can regenerate a new key if needed (old key will stop working)
 
 ### Time Estimate
+
 - **Active work**: 15-30 minutes
 - **Wait time**: Immediate (instant approval)
 - **Total**: 30 minutes
 
 ### Notes
+
 - **Start this IMMEDIATELY** - no blockers
 - API key is tied to your Steam account
 - Keep the account credentials secure (2FA enabled)
@@ -216,6 +243,7 @@ Share the API key securely via:
 ## Story 2.5.2: Register Xbox Live Application
 
 ### Story Metadata
+
 ```yaml
 id: story-2.5.2
 title: Register Xbox Live Application with Microsoft Azure
@@ -229,20 +257,24 @@ user_action: true
 ```
 
 ### User Story
+
 **As a** GameDuel product owner  
 **I want** to register GameDuel as an Xbox Live application  
 **So that** our app can authenticate users and access their Xbox gaming data
 
 ### Context
+
 Xbox Live API access requires registering an application through Azure Active Directory. This process is more complex than Steam and may require organizational approval. This is a **USER action**.
 
 ### Pre-requisites
+
 - Microsoft account (can be personal or work account)
 - Access to Azure Portal (free tier is sufficient)
 - Organization approval (if using work account)
 - Valid email for verification
 
 ### Acceptance Criteria
+
 - [ ] Microsoft Azure account created/accessed
 - [ ] Xbox Live application registered in Azure Portal
 - [ ] Application (Client) ID obtained
@@ -255,6 +287,7 @@ Xbox Live API access requires registering an application through Azure Active Di
 ### Step-by-Step Instructions
 
 #### Step 1: Create Microsoft Azure Account
+
 1. Go to https://portal.azure.com
 2. Sign in with Microsoft account (or create one at https://account.microsoft.com)
 3. If first time: Complete Azure free account setup
@@ -263,28 +296,32 @@ Xbox Live API access requires registering an application through Azure Active Di
    - Verify email address
 
 #### Step 2: Navigate to Azure Active Directory
+
 1. In Azure Portal, search for "Azure Active Directory" in top search bar
 2. Click on "Azure Active Directory" in results
 3. In left sidebar, click "App registrations"
 
 #### Step 3: Register New Application
+
 1. Click "+ New registration" (top of page)
 2. Fill in application details:
    - **Name**: `GameDuel`
    - **Supported account types**: Select "Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)"
-   - **Redirect URI**: 
+   - **Redirect URI**:
      - Platform: `Public client/native (mobile & desktop)`
      - URI: `exp://localhost:19000` (for Expo development)
      - Click "Add URI" and add: `gameduel://auth/xbox/callback`
 3. Click "Register"
 
 #### Step 4: Save Application (Client) ID
+
 1. After registration, you'll see the "Overview" page
 2. **Copy and save the "Application (client) ID"**
    - Looks like: `12345678-1234-1234-1234-123456789abc` (GUID format)
 3. Also note the "Directory (tenant) ID" (you'll need this too)
 
 #### Step 5: Create Client Secret
+
 1. In left sidebar, click "Certificates & secrets"
 2. Under "Client secrets", click "+ New client secret"
 3. Add description: `GameDuel Development Secret`
@@ -295,6 +332,7 @@ Xbox Live API access requires registering an application through Azure Active Di
 7. Save this securely with the Client ID
 
 #### Step 6: Configure API Permissions
+
 1. In left sidebar, click "API permissions"
 2. Click "+ Add a permission"
 3. Select "APIs my organization uses"
@@ -308,6 +346,7 @@ Xbox Live API access requires registering an application through Azure Active Di
 7. **Important**: Click "Grant admin consent" (if you have permissions)
 
 #### Step 7: Configure Authentication Settings
+
 1. In left sidebar, click "Authentication"
 2. Under "Platform configurations", verify your redirect URIs
 3. Under "Advanced settings":
@@ -315,7 +354,9 @@ Xbox Live API access requires registering an application through Azure Active Di
 4. Click "Save"
 
 #### Step 8: Document Credentials
+
 Create a secure note with:
+
 ```
 Xbox Live API Credentials
 =========================
@@ -341,12 +382,15 @@ Created By: [YOUR NAME]
 ```
 
 #### Step 9: Test Configuration (Optional but Recommended)
+
 While you can't fully test until developers implement OAuth, you can verify:
+
 1. Client ID is valid GUID format
 2. Secret is copied correctly
 3. Application appears in Azure Portal under "App registrations"
 
 ### Verification Steps
+
 1. Application registered in Azure Portal
 2. Client ID and Secret obtained
 3. Redirect URIs configured
@@ -355,6 +399,7 @@ While you can't fully test until developers implement OAuth, you can verify:
 6. Credentials shared with development team
 
 ### Definition of Done
+
 - [ ] Azure account created/accessed
 - [ ] Xbox Live application registered
 - [ ] Client ID and Secret obtained
@@ -366,36 +411,43 @@ While you can't fully test until developers implement OAuth, you can verify:
 ### Troubleshooting
 
 **"I don't have access to Azure Active Directory"**
+
 - Use personal Microsoft account (not work account)
 - Create new Microsoft account at https://account.microsoft.com
 - Sign up for free Azure tier
 
 **"Xbox Live API not showing in permissions"**
+
 - Use Microsoft Graph API as alternative
 - Add permissions: `User.Read`, `XboxLive.signin`
 - This provides basic Xbox profile access
 
 **"Need admin consent but I'm not admin"**
+
 - If using work account, request IT admin to grant consent
 - Alternative: Use personal Microsoft account
 - For development, some permissions work without admin consent
 
 **"Can't see Client Secret value"**
+
 - You can only see it once when created
 - If lost, create a new secret (old one can be deleted)
 - Update development team with new secret
 
 **"Redirect URI validation error"**
+
 - Ensure exact match: `exp://localhost:19000`
 - For Expo, the scheme is `exp://` not `http://`
 - Second URI should be: `gameduel://auth/xbox/callback`
 
 ### Time Estimate
+
 - **Active work**: 1-2 hours (first time)
 - **Wait time**: Usually immediate, but organizational approval may take 1-3 days
 - **Total**: 1-2 hours to 3 days
 
 ### Important Notes
+
 - **Start this IMMEDIATELY** - organizational approvals may delay
 - Client Secret expires in 24 months - calendar reminder!
 - Keep Azure account credentials secure (enable 2FA)
@@ -403,6 +455,7 @@ While you can't fully test until developers implement OAuth, you can verify:
 - If using work account, ensure your organization allows Xbox Live API access
 
 ### Additional Resources
+
 - [Microsoft Identity Platform Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/)
 - [Xbox Live API Overview](https://docs.microsoft.com/en-us/gaming/xbox-live/)
 - [Register an Azure AD App](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
@@ -412,6 +465,7 @@ While you can't fully test until developers implement OAuth, you can verify:
 ## Story 2.5.3: Determine PSN Access Strategy
 
 ### Story Metadata
+
 ```yaml
 id: story-2.5.3
 title: Research and Determine PlayStation Network API Access Strategy
@@ -425,20 +479,24 @@ user_action: true (with technical consultation)
 ```
 
 ### User Story
+
 **As a** GameDuel product owner  
 **I want** to determine the best approach for PlayStation Network integration  
 **So that** we can access PSN trophy data and game information legally and reliably
 
 ### Context
+
 Unlike Steam and Xbox, Sony does NOT provide an official public API for PlayStation Network. This story involves researching options, assessing legal/technical risks, and making a strategic decision. This requires collaboration between USER (business/legal decision) and DEVELOPER (technical feasibility).
 
 ### Pre-requisites
+
 - Understanding of PSN integration goals (Architecture Section 9.1.3)
 - Legal/compliance review capability
 - Technical evaluation of unofficial APIs
 - Risk tolerance assessment
 
 ### Acceptance Criteria
+
 - [ ] Official PSN API status confirmed (expected: not available)
 - [ ] Unofficial API options researched and documented
 - [ ] Legal risks assessed and documented
@@ -452,7 +510,9 @@ Unlike Steam and Xbox, Sony does NOT provide an official public API for PlayStat
 ### Research Areas
 
 #### Option 1: Official Sony Partnership
+
 **What to investigate:**
+
 - Sony Developer Program requirements
 - Timeline for approval (typically 6+ months)
 - Costs involved (likely significant)
@@ -460,12 +520,14 @@ Unlike Steam and Xbox, Sony does NOT provide an official public API for PlayStat
 - Contact: https://www.playstation.com/en-us/dev-program/
 
 **Pros:**
+
 - Fully legal and supported
 - Reliable API access
 - Official documentation
 - Sony marketing opportunities
 
 **Cons:**
+
 - 6-12 month approval process
 - Likely requires existing game or significant app
 - May require revenue sharing or fees
@@ -474,6 +536,7 @@ Unlike Steam and Xbox, Sony does NOT provide an official public API for PlayStat
 **Recommendation for MVP:** ❌ Too slow for MVP timeline
 
 #### Option 2: Unofficial API Libraries
+
 **What to investigate:**
 Research these community-maintained libraries:
 
@@ -497,18 +560,21 @@ Research these community-maintained libraries:
    - Risk level: HIGH
 
 **How unofficial APIs work:**
+
 - User provides NPSSO token from their PSN account
 - Library makes authenticated requests to PSN endpoints
 - No official API key or registration
 - Relies on undocumented endpoints
 
 **Pros:**
+
 - Available immediately
 - No Sony approval needed
 - Free to use
 - Community support
 
 **Cons:**
+
 - Violates Sony Terms of Service (technically)
 - Could break without notice
 - No official support
@@ -516,19 +582,23 @@ Research these community-maintained libraries:
 - Legal gray area
 
 #### Option 3: Defer to Post-MVP
+
 **What this means:**
+
 - Launch MVP with Steam + Xbox only
 - Add PSN in Phase 2 after proving concept
 - Pursue official partnership with demo app
 - Reevaluate unofficial options
 
 **Pros:**
+
 - Focuses MVP on achievable features
 - Reduces legal risk
 - Allows time for Sony partnership application
 - Steam + Xbox cover 70%+ of target market
 
 **Cons:**
+
 - Missing PlayStation audience (20-25% of gamers)
 - Incomplete gaming platform coverage
 - Potential user disappointment
@@ -562,6 +632,7 @@ Research these community-maintained libraries:
 **For MVP: Option 2 (Unofficial API) with clear user disclaimers**
 
 Rationale:
+
 - PSN represents 20-25% of gaming market
 - Unofficial API provides basic trophy/game data
 - Can be implemented in MVP timeline
@@ -569,6 +640,7 @@ Rationale:
 - Plan migration to official API post-MVP
 
 **Implementation guidelines if choosing unofficial API:**
+
 1. Use established library (psn-api is most mature)
 2. Include clear disclaimers in app:
    - "PlayStation Network integration uses unofficial methods"
@@ -582,59 +654,73 @@ Rationale:
 ### Step-by-Step Instructions
 
 #### Step 1: Research Official Partnership (2 hours)
+
 1. Visit https://www.playstation.com/en-us/dev-program/
 2. Review requirements and timeline
 3. Document findings in decision document
 
 #### Step 2: Evaluate Unofficial APIs (2 hours)
+
 1. Review psn-api GitHub repository
 2. Check recent issues/activity (is it maintained?)
 3. Test with personal PSN account (if possible)
 4. Document capabilities and limitations
 
 #### Step 3: Assess Legal Risk (1 hour + legal consultation)
+
 1. Review Sony's PlayStation Network Terms of Service
 2. Consult with legal counsel (if available)
 3. Document potential risks and mitigations
 
 #### Step 4: Make Decision (1 hour stakeholder meeting)
+
 1. Present options to stakeholders
 2. Discuss risk tolerance and priorities
 3. Make and document decision
 4. Define implementation plan
 
 #### Step 5: Document Decision
+
 Create decision document:
+
 ```markdown
 # PSN Integration Strategy Decision
 
 ## Decision
+
 [Official Partnership / Unofficial API / Defer to Post-MVP]
 
 ## Rationale
+
 [Why this decision was made]
 
 ## Risks
+
 - [List identified risks]
 
 ## Mitigations
+
 - [How we'll address risks]
 
 ## Implementation Plan
+
 - [Technical approach]
 - [Timeline]
 - [Resources needed]
 
 ## Exit Strategy
+
 - [How we'll migrate to official API if/when available]
 
 ## Approval
+
 - Product Owner: [Name/Date]
 - Tech Lead: [Name/Date]
 - Legal (if applicable): [Name/Date]
 ```
 
 ### Verification Steps
+
 1. Research completed for all options
 2. Legal risks documented
 3. Technical feasibility assessed
@@ -643,6 +729,7 @@ Create decision document:
 6. Implementation plan created
 
 ### Definition of Done
+
 - [ ] Official partnership option researched
 - [ ] Unofficial API options evaluated
 - [ ] Legal risks assessed
@@ -655,22 +742,26 @@ Create decision document:
 ### Troubleshooting
 
 **"Can't find Sony developer contact"**
+
 - Start here: https://www.playstation.com/en-us/dev-program/
 - Alternative: https://partners.playstation.net/
 - Note: Typically requires existing game or significant app
 
 **"Unofficial API seems risky"**
+
 - Correct assessment - there ARE risks
 - Consider deferring to post-MVP
 - Steam + Xbox cover majority of market
 - Can launch MVP without PSN
 
 **"Legal counsel says ToS violation is concerning"**
+
 - Strong signal to defer to post-MVP
 - Pursue official partnership
 - Launch with Steam + Xbox only
 
 ### Time Estimate
+
 - **Research**: 3-4 hours
 - **Legal consultation**: 1-2 hours (if needed)
 - **Decision meeting**: 1 hour
@@ -678,6 +769,7 @@ Create decision document:
 - **Total**: 6-8 hours spread over 2-3 days
 
 ### Important Notes
+
 - **This is a strategic decision** - involves business, legal, and technical
 - No single "right" answer - depends on risk tolerance
 - **Can defer to post-MVP** - not blocking Epic 1-2
@@ -685,12 +777,15 @@ Create decision document:
 - Document decision thoroughly for future reference
 
 ### Recommended Decision for Most Teams
+
 **Defer to Post-MVP** unless:
+
 - You have existing Sony relationship
 - Legal counsel approves unofficial API use
 - PSN is critical for target market (e.g., PlayStation-focused app)
 
 **Rationale:**
+
 - Reduces risk
 - Focuses MVP
 - Steam + Xbox cover 70%+ market
@@ -701,6 +796,7 @@ Create decision document:
 ## Story 2.5.4: Configure Environment Variables & Test Credentials
 
 ### Story Metadata
+
 ```yaml
 id: story-2.5.4
 title: Configure Environment Variables and Test Gaming API Credentials
@@ -714,14 +810,17 @@ user_action: false (developer task)
 ```
 
 ### User Story
+
 **As a** developer  
 **I want** gaming platform credentials securely configured  
 **So that** I can test API integrations without exposing secrets
 
 ### Context
+
 Once credentials are obtained from Stories 2.5.1-2.5.3, we need to configure them securely in our development and production environments. This follows Architecture Section 8.2 (Data Security) and Section 12.2 (Environment Configuration).
 
 ### Pre-requisites
+
 - Epic 0 complete (project initialized)
 - Credentials from Story 2.5.1 (Steam API key)
 - Credentials from Story 2.5.2 (Xbox Client ID/Secret)
@@ -729,6 +828,7 @@ Once credentials are obtained from Stories 2.5.1-2.5.3, we need to configure the
 - Expo project set up
 
 ### Acceptance Criteria
+
 - [ ] `.env` file created with all credentials (gitignored)
 - [ ] `.env.example` created with placeholder values (committed to git)
 - [ ] Expo secrets configured for EAS builds
@@ -743,6 +843,7 @@ Once credentials are obtained from Stories 2.5.1-2.5.3, we need to configure the
 #### Step 1: Create Environment Configuration
 
 **Create `.env` file** (root directory):
+
 ```bash
 # Gaming Platform API Credentials
 # ================================
@@ -766,6 +867,7 @@ API_TIMEOUT=10000
 ```
 
 **Create `.env.example`** (root directory - this IS committed):
+
 ```bash
 # Gaming Platform API Credentials - Example Configuration
 # =========================================================
@@ -791,6 +893,7 @@ API_TIMEOUT=10000
 ```
 
 **Update `.gitignore`:**
+
 ```bash
 # Environment variables
 .env
@@ -814,6 +917,7 @@ npm install --save-dev @types/react-native-dotenv
 ```
 
 **Configure babel.config.js:**
+
 ```javascript
 module.exports = function (api) {
   api.cache(true);
@@ -835,6 +939,7 @@ module.exports = function (api) {
 ```
 
 **Create TypeScript types** (src/types/env.d.ts):
+
 ```typescript
 declare module '@env' {
   export const STEAM_API_KEY: string;
@@ -850,6 +955,7 @@ declare module '@env' {
 #### Step 3: Create Environment Configuration Service
 
 **Create config service** (src/config/environment.ts):
+
 ```typescript
 import {
   STEAM_API_KEY,
@@ -966,6 +1072,7 @@ export default ENV;
 #### Step 4: Create Credential Test Script
 
 **Create test script** (src/config/testCredentials.ts):
+
 ```typescript
 import axios from 'axios';
 import ENV from './environment';
@@ -1042,13 +1149,13 @@ export async function testPSNConfiguration(): Promise<boolean> {
 
 export async function testAllCredentials(): Promise<void> {
   console.log('\n🔐 Testing Gaming Platform Credentials\n');
-  console.log('=' .repeat(50));
+  console.log('='.repeat(50));
 
   const steamOk = await testSteamCredentials();
   const xboxOk = await testXboxCredentials();
   const psnOk = await testPSNConfiguration();
 
-  console.log('=' .repeat(50));
+  console.log('='.repeat(50));
   console.log('\n📊 Test Results:');
   console.log(`  Steam:  ${steamOk ? '✅ PASS' : '❌ FAIL'}`);
   console.log(`  Xbox:   ${xboxOk ? '✅ PASS' : '❌ FAIL'}`);
@@ -1073,6 +1180,7 @@ if (require.main === module) {
 ```
 
 **Add npm script** (package.json):
+
 ```json
 {
   "scripts": {
@@ -1098,6 +1206,7 @@ eas secret:create --scope project --name XBOX_TENANT_ID --value "your_tenant_id"
 ```
 
 **Update app.config.js** (or app.json → app.config.js):
+
 ```javascript
 module.exports = {
   expo: {
@@ -1117,13 +1226,16 @@ module.exports = {
 #### Step 6: Update Documentation
 
 **Create docs/CREDENTIAL_SETUP.md:**
+
 ```markdown
 # Gaming Platform Credential Setup
 
 ## Overview
+
 This guide explains how to configure gaming platform API credentials for local development.
 
 ## Prerequisites
+
 - Completed Epic 2.5 Stories 2.5.1 and 2.5.2
 - Obtained Steam API key
 - Obtained Xbox Live credentials
@@ -1131,16 +1243,20 @@ This guide explains how to configure gaming platform API credentials for local d
 ## Setup Instructions
 
 ### 1. Copy Environment Template
+
 \`\`\`bash
 cp .env.example .env
 \`\`\`
 
 ### 2. Fill in Credentials
+
 Edit `.env` and add your actual credentials:
+
 - Steam API key from Story 2.5.1
 - Xbox Client ID, Secret, Tenant ID from Story 2.5.2
 
 ### 3. Test Configuration
+
 \`\`\`bash
 npm run test:credentials
 \`\`\`
@@ -1148,34 +1264,42 @@ npm run test:credentials
 You should see ✅ for Steam and Xbox if configured correctly.
 
 ### 4. Restart Metro Bundler
+
 After changing .env:
 \`\`\`bash
+
 # Stop Metro (Ctrl+C)
+
 npm start -- --reset-cache
 \`\`\`
 
 ## Troubleshooting
 
 **"All tests fail"**
+
 - Check .env file exists in project root
 - Verify credentials are correct (no extra spaces)
 - Restart Metro bundler
 
 **"Steam API key invalid"**
+
 - Verify key at https://steamcommunity.com/dev
 - Ensure no spaces or quotes in .env
 
 **"Xbox GUIDs invalid format"**
+
 - Check Client ID and Tenant ID are proper GUIDs
 - Copy directly from Azure Portal
 
 ## Security Notes
+
 - NEVER commit .env file to git
 - Share credentials via secure channel only
 - Rotate secrets if accidentally exposed
 ```
 
 ### Verification Steps
+
 1. `.env` file created with real credentials
 2. `.env.example` committed to git
 3. `npm run test:credentials` passes for Steam and Xbox
@@ -1183,6 +1307,7 @@ npm start -- --reset-cache
 5. Metro bundler recognizes environment variables
 
 ### Definition of Done
+
 - [ ] Environment configuration created
 - [ ] All credentials tested and working
 - [ ] EAS secrets configured
@@ -1192,6 +1317,7 @@ npm start -- --reset-cache
 - [ ] Code reviewed and merged
 
 ### Blockers / Dependencies
+
 - **Requires**: Story 2.5.1 (Steam credentials)
 - **Requires**: Story 2.5.2 (Xbox credentials)
 - **Requires**: Story 2.5.3 (PSN decision)
@@ -1200,6 +1326,7 @@ npm start -- --reset-cache
 ### Troubleshooting
 
 **"Environment variables not loading"**
+
 ```bash
 # Clear Metro cache
 npm start -- --reset-cache
@@ -1208,12 +1335,14 @@ npm start -- --reset-cache
 ```
 
 **"TypeScript errors on @env imports"**
+
 ```bash
 # Ensure src/types/env.d.ts exists
 # Restart TypeScript server in VS Code: Cmd+Shift+P → "Reload Window"
 ```
 
 **"Test script fails to run"**
+
 ```bash
 # Install ts-node if not present
 npm install --save-dev ts-node
@@ -1223,12 +1352,14 @@ npx ts-node src/config/testCredentials.ts
 ```
 
 ### Time Estimate
+
 - **Setup**: 1-2 hours
 - **Testing**: 30 minutes
 - **Documentation**: 30 minutes
 - **Total**: 2-3 hours
 
 ### Important Notes
+
 - This must be completed BEFORE Epic 3 starts
 - All team members need to complete setup
 - Credentials should be rotated periodically
@@ -1240,6 +1371,7 @@ npx ts-node src/config/testCredentials.ts
 ## Epic 2.5 Summary
 
 ### Timeline Overview
+
 ```
 Week 0-1:  Stories 2.5.1, 2.5.2 (START IMMEDIATELY - USER ACTIONS)
   ├─ Day 1: Register Steam API key (15-30 min)
@@ -1257,19 +1389,22 @@ Week 9+:   Epic 3 can proceed without blockers ✅
 ```
 
 ### Total Estimated Effort
+
 - **User Actions**: 3-5 hours active work
 - **Wait Time**: 0-7 days (platform approvals)
 - **Developer Actions**: 2-3 hours (Story 2.5.4)
 - **Total Calendar Time**: 1-2 weeks (if started in Week 0)
 
 ### Critical Success Factors
+
 ✅ **Start immediately** - don't wait for Epic 0 to finish  
 ✅ **Secure credential handling** - never commit secrets  
 ✅ **Complete before Week 8** - must not block Epic 3  
 ✅ **Document everything** - team needs clear setup guide  
-✅ **Test thoroughly** - verify all credentials work  
+✅ **Test thoroughly** - verify all credentials work
 
 ### Story Dependencies
+
 ```
 2.5.1 (Steam) ────┐
 2.5.2 (Xbox)  ────┼────> 2.5.4 (Configure)
@@ -1277,6 +1412,7 @@ Week 9+:   Epic 3 can proceed without blockers ✅
 ```
 
 ### Post-Epic Deliverables
+
 - ✅ Steam Web API key obtained and working
 - ✅ Xbox Live application registered with OAuth credentials
 - ✅ PSN strategy decided and documented
@@ -1287,19 +1423,21 @@ Week 9+:   Epic 3 can proceed without blockers ✅
 
 ### Risks & Mitigations
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| Platform approval delays | Low | High | Start Week 0, have fallback plan |
-| Credentials lost/exposed | Low | High | Secure storage, rotation process |
-| PSN unofficial API breaks | Medium | Medium | Graceful degradation, defer to post-MVP |
-| Team setup confusion | Low | Medium | Clear documentation, support process |
+| Risk                      | Likelihood | Impact | Mitigation                              |
+| ------------------------- | ---------- | ------ | --------------------------------------- |
+| Platform approval delays  | Low        | High   | Start Week 0, have fallback plan        |
+| Credentials lost/exposed  | Low        | High   | Secure storage, rotation process        |
+| PSN unofficial API breaks | Medium     | Medium | Graceful degradation, defer to post-MVP |
+| Team setup confusion      | Low        | Medium | Clear documentation, support process    |
 
 ---
 
 ## Handoff Notes
 
 ### To Development Team
+
 Once Epic 2.5 is complete, you'll have:
+
 - ✅ Steam API key ready to use in Epic 3 Story 3.2
 - ✅ Xbox credentials ready for Epic 3 Story 3.5
 - ✅ PSN approach decided for Epic 3 Story 3.7
@@ -1307,13 +1445,16 @@ Once Epic 2.5 is complete, you'll have:
 - ✅ Test scripts to verify setup
 
 ### To Product Owner
+
 Remember to:
+
 - 🔄 Rotate credentials every 12-24 months
 - 📅 Calendar reminder for Xbox secret expiration (24 months)
 - 📊 Track if PSN absence impacts user adoption
 - 🤝 Begin Sony partnership application after MVP launch (if needed)
 
 ### Next Epic
+
 **Epic 3: Gaming Platform Integrations** can now proceed without credential blockers!
 
 ---
